@@ -1,11 +1,436 @@
+/* ======================
+   RESET
+====================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  font-family: system-ui, sans-serif;
-  background-color: #9eccfa;
-  color: #212842;
+/* ======================
+   THEME VARIABLES
+====================== */
+:root {
+  --bg-main: #9eccfa;
+  --text-main: #212842;
+  --border-subtle: rgba(33, 40, 66, 0.25);
 }
+
+/* ======================
+   BASE STYLES
+====================== */
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+section {
+  padding: 6rem 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+/* ======================
+   TYPOGRAPHY
+====================== */
+h1,
+h2,
+h3 {
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+}
+
+h1 {
+  font-size: clamp(3rem, 6vw, 4rem);
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+p {
+  font-size: 0.95rem;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* ======================
+   NAVBAR
+====================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: var(--bg-main);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 4rem;
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.85rem;
+  padding-bottom: 0.2rem;
+}
+
+.nav-links a.active {
+  border-bottom: 1px solid var(--text-main);
+}
+
+/* ======================
+   HERO
+====================== */
+.hero {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-text {
+  max-width: 750px;
+}
+
+.name-block {
+  display: inline-block;
+  width: 120px;
+  height: 50px;
+  background-color: var(--text-main);
+  vertical-align: middle;
+  margin-left: 0.5rem;
+}
+
+.roles {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.roles span {
+  padding: 0.4rem 1.2rem;
+  border: 1px solid var(--text-main);
+  font-size: 0.8rem;
+  letter-spacing: 0.4px;
+}
+
+.hero p {
+  margin-bottom: 2rem;
+}
+
+.hero-cta {
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  border-bottom: 1px solid var(--text-main);
+  padding-bottom: 0.2rem;
+}
+
+/* ===== TYPEWRITER EFFECT ===== */
+.typewriter {
+  font-weight: 700; /* BOLD */
+  color: #1f2937; /* blackish-grey aesthetic */
+  letter-spacing: -0.5px;
+}
+
+.cursor {
+  margin-left: 4px;
+  font-weight: 400;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0;
+  }
+}
+
+
+/* ======================
+   ABOUT
+====================== */
+.about {
+  text-align: center;
+}
+
+/* ======================
+   WORK / PROJECTS
+====================== */
+.work {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.project-card {
+  border: 1px solid var(--border-subtle);
+  padding: 1.5rem;
+  transition: transform 0.25s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+}
+
+.project-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+}
+
+.project-card p {
+  font-size: 0.9rem;
+}
+
+/* ======================
+   SKILLS
+====================== */
+.skills {
+  text-align: center;
+}
+
+.skills-list {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.skills-list span {
+  padding: 0.6rem 1.4rem;
+  border: 1px solid var(--text-main);
+  font-size: 0.8rem;
+  letter-spacing: 0.4px;
+}
+
+/* ======================
+   RESPONSIVE (BASIC)
+====================== */
+@media (max-width: 900px) {
+  .projects {
+    grid-template-columns: 1fr;
+  }
+
+  .navbar {
+    padding: 1.5rem 2rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+}
+
+/* ======================
+   NEO MINIMAL SECTION
+====================== */
+.neo {
+  position: relative;
+  background-color: #1e2a4a; /* pastel dark blue */
+  color: #f5f7fb;
+  padding: 8rem 4rem;
+  overflow: hidden;
+}
+
+/* ===== TITLE ===== */
+.neo-title {
+  font-family: "Playfair Display", serif;
+  font-size: 3rem;
+  margin-bottom: 4rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== GRID ===== */
+.neo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== CARDS ===== */
+.neo-card {
+  background: #eef1f8;
+  border-radius: 20px;
+  height: 220px;
+  filter: grayscale(100%);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.neo-card.tall {
+  height: 320px;
+}
+
+.neo-card:hover {
+  transform: translateY(-8px);
+  filter: grayscale(0%);
+}
+
+
+/* ===== SUBTLE TEXTURE (OPTIONAL ELITE TOUCH) ===== */
+.neo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.06;
+  pointer-events: none;
+}
+/* ===== NEO REVEAL ANIMATION ===== */
+.neo {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.neo.neo-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ======================
+   RESUME SECTION
+====================== */
+.resume {
+  text-align: center;
+  padding: 6rem 2rem;
+  background: transparent;
+}
+
+.resume-title {
+  font-family: "Playfair Display", serif;
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.resume-text {
+  max-width: 520px;
+  margin: 0 auto 2.5rem;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.resume-btn {
+  display: inline-block;
+  padding: 0.9rem 2.4rem;
+  border: 1px solid var(--text-main);
+  font-size: 0.85rem;
+  letter-spacing: 0.6px;
+  transition: all 0.25s ease;
+}
+
+.resume-btn:hover {
+  background: var(--text-main);
+  color: white;
+}
+
+/* ======================
+   LOAD MORE INTERACTION
+====================== */
+.load-more-wrapper {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.load-more-btn {
+  background: none;
+  border: none;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  color: var(--text-main);
+  cursor: pointer;
+  position: relative;
+}
+
+.load-more-btn::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 40px;
+  height: 1px;
+  background: var(--text-main);
+  transform: translateX(-50%);
+}
+
+.load-more-btn:hover {
+  opacity: 0.7;
+}
+
+/* ===== NAVBAR SCROLL EFFECT ===== */
+.navbar-scrolled {
+  background-color: rgba(158, 204, 250, 0.85); /* bg-main with opacity */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(33, 40, 66, 0.08);
+}
+
+/* ======================
+   TIGER (DECORATIVE)
+====================== */
+/* ======================
+   TIGER (GLOBAL, FIXED)
+====================== */
+.tiger {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 160px;
+  opacity: 0.45;
+  pointer-events: none;
+  z-index: 2;
+
+  filter: grayscale(100%)
+          sepia(100%)
+          hue-rotate(190deg)
+          saturate(200%)
+          brightness(0.9);
+}
+
+/* ===== HIDE ON MOBILE ===== */
+@media (max-width: 768px) {
+  .tiger {
+    display: none;
+  }
+}
+
