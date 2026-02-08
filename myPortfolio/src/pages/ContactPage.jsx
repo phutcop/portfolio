@@ -85,7 +85,7 @@ function Contact() {
 
             <li>
               <a
-                href="https://open.spotify.com/user/6dcswqxdb"
+                href="https://open.spotify.com/user/d6cswqxdbscg6zkpul2qh3d6t?si=64a7748be1a3421a"
                 target="_blank"
                 rel="noreferrer"
                 className="social spotify"
@@ -105,16 +105,6 @@ function Contact() {
               </a>
             </li>
 
-            <li>
-              <a
-                href="https://pinterest.com/"
-                target="_blank"
-                rel="noreferrer"
-                className="social pinterest"
-              >
-                pinterest
-              </a>
-            </li>
 
             <li>
               <a
@@ -140,7 +130,7 @@ function Contact() {
 
             <li>
               <a
-                href="https://github.com/YOUR_GITHUB_USERNAME"
+                href="https://github.com/phutcop"
                 target="_blank"
                 rel="noreferrer"
                 className="social github"

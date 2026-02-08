@@ -9,7 +9,7 @@ function Resume() {
       </p>
 
       <a
-        href="https://drive.google.com/file/d/1z3mmNB7gDHm6TLZV5aDmV7BsN3bpfOX_/view?usp=sharing"
+        href="https://drive.google.com/YOUR_RESUME_LINK_HERE"
         target="_blank"
         rel="noopener noreferrer"
         className="resume-btn"
