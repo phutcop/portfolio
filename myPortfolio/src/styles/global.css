@@ -1,63 +1,559 @@
-/* ===== ABOUT ===== */
-.about {
-  max-width: 800px;
-  margin: 6rem auto;
-  padding: 0 2rem;
-  text-align: center;
+/* =========================
+   RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.about h2 {
+/* =========================
+   THEME VARIABLES
+========================= */
+:root {
+  --bg-main: #9eccfa;
+  --text-main: #212842;
+  --panel-border: rgba(33, 40, 66, 0.2);
+}
+
+/* =========================
+   BASE
+========================= */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+
+  overflow: hidden; /* 🔒 DISABLE MANUAL SCROLL */
+}
+
+/* =========================
+   APP LAYOUT
+========================= */
+.app-layout {
+  display: flex;
+}
+
+/* =========================
+   LEFT ICON PANEL
+========================= */
+.icon-panel {
+  position: fixed;
+  inset: 0 auto 0 0;
+
+  width: 220px;
+  height: 100vh;
+
+  border-right: 1px solid var(--panel-border);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+
+  overflow: hidden;
+  z-index: 10;
+}
+
+.icon-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url("../assets/panel/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0.75;
+  z-index: 0;
+}
+
+/* =========================
+   PANEL ICONS
+========================= */
+.icon-panel button,
+.icon-panel a {
+  position: relative;
+  z-index: 2;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+
+  color: inherit;
+  text-decoration: none;
+
+  opacity: 0.9;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.icon-panel button:hover,
+.icon-panel a:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.icon-panel img {
+  width: 56px;
+  height: 56px;
+}
+
+.icon-panel span {
+  font-size: 0.75rem;
+  letter-spacing: 0.6px;
+  text-transform: lowercase;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+.content {
+  margin-left: 220px;
+  width: calc(100% - 220px);
+
+  scroll-snap-type: y mandatory; /* SNAP ONLY VIA CODE */
+}
+
+.section {
+  min-height: 100vh;
+  padding: 6rem 4rem;
+
+  display: flex;
+  align-items: center;
+
+  scroll-snap-align: start;
+}
+
+/* =========================
+   TIGER
+========================= */
+.tiger {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+
+  width: 160px;
+  opacity: 0.9;
+
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* =========================
+   HOME
+========================= */
+.home {
+  justify-content: center;
+}
+
+.home-content {
+  max-width: 720px;
+}
+
+.home-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  line-height: 1.1;
+  margin-bottom: 2rem;
+}
+
+.typewriter {
+  font-weight: 700;
+  color: #1e2a4a;
+}
+
+.cursor {
+  margin-left: 4px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+.home-text {
+  font-size: 1rem;
+  max-width: 560px;
+  opacity: 0.85;
+}
+
+/* 🔽 SCROLL ARROW (FINAL) */
+.scroll-down {
+  margin-top: 1.6rem; /* 🔥 REDUCE GAP HERE */
+
+  background: none;
+  border: none;
   font-size: 2rem;
-  margin-bottom: 1.5rem;
-  font-weight: 500;
+
+  cursor: pointer;
+  opacity: 0.7;
+
+  animation: bounce 1.6s infinite;
 }
 
-.about-text {
-  font-size: 0.95rem;
-  margin-bottom: 1rem;
-  color: var(--color-dark);
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
 }
-/* ===== WORK ===== */
+
+/* =========================
+   ABOUT
+========================= */
+.about-section {
+  position: relative;          /* 🔥 CONTAINS BG WORD */
+  background-color: #faf9f6;
+  overflow: hidden;            /* 🔥 PREVENTS BLEED */
+}
+
+.about-bg-word {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+
+  font-size: 18rem;
+  font-weight: 800;
+  color: rgba(0, 0, 0, 0.04);
+
+  pointer-events: none;
+  user-select: none;
+}
+
+.about-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+
+  border-left: 2px solid rgba(0, 0, 0, 0.15);
+  padding-left: 1rem;
+
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.about-text.muted {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 768px) {
+  .icon-panel {
+    width: 100px;
+    gap: 2rem;
+  }
+
+  .content {
+    margin-left: 100px;
+    width: calc(100% - 100px);
+    padding: 4rem 2rem;
+  }
+
+  .about-layout {
+    flex-direction: column;
+  }
+
+  .about-bg-word {
+    font-size: 10rem;
+  }
+
+  .tiger {
+    width: 100px;
+    right: 12px;
+    bottom: 12px;
+  }
+}
+/* =========================
+   SECTION UP / DOWN NAV
+========================= */
+/* =========================
+   SECTION NAV (UP / DOWN)
+   → ONLY FOR SECTIONS THAT NEED IT
+========================= */
+.section-nav {
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+/* HIDE NAV BY DEFAULT */
+.section:not(.has-nav) .section-nav {
+  display: none;
+}
+
+
+.nav-arrow {
+  background: none;
+  border: none;
+
+  font-size: 1.4rem;           /* arrow size */
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.5);
+
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-arrow:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.nav-arrow.down:hover {
+  transform: translateY(2px);
+}
+
+/* MOBILE: HIDE ARROWS */
+@media (max-width: 768px) {
+  .section-nav {
+    display: none;
+  }
+}
+/* =========================
+   WORK SECTION (LIST + DROPDOWN)
+========================= */
+
 .work {
-  max-width: 1000px;
-  margin: 6rem auto;
-  padding: 0 2rem;
+  display: flex;
+  justify-content: center;
 }
 
-.work h2 {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 3rem;
+.work-wrapper {
+  max-width: 720px;          /* controls text width */
+  width: 100%;
+}
+
+.work-title {
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  text-transform: lowercase;
+}
+
+.work-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;               /* space between items */
+}
+
+.work-header {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 1rem;
   font-weight: 500;
+  text-align: left;
+  cursor: pointer;
 }
 
-.projects {
+.work-symbol {
+  font-size: 1.2rem;         /* + / − size */
+  opacity: 0.6;
+}
+
+/* DESCRIPTION ANIMATION */
+.work-description {
+  max-height: 0;                 /* collapsed */
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-height 0.4s ease,
+    opacity 0.3s ease;
+}
+
+/* when open */
+.work-description.open {
+  max-height: 200px;             /* 🔥 increase if text grows */
+  opacity: 1;
+  margin-top: 0.8rem;
+}
+/* ACTIVE WORK ITEM */
+.work-item.active .work-header {
+  font-weight: 600;              /* 🔥 bold current item */
+}
+
+.work-item.active .work-arrow {
+  opacity: 1;                    /* arrow feels more confident */
+}
+
+/* REMOVE DEFAULT LIST BULLETS (outer bullets) */
+.skills-list {
+  list-style: none;     /* 🔥 THIS removes the bullets */
+  padding: 0;           /* removes left indentation */
+  margin: 0;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact {
+  background: #faf9f6;
+}
+
+.contact-wrapper {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.project-card {
-  border: 1px solid var(--color-dark);
-  padding: 1.5rem;
+/* FORM */
+.contact-form {
+  display: flex;
+  flex-direction: column;
 }
 
-.project-card h3 {
-  margin-bottom: 0.8rem;
-  font-size: 1.1rem;
+.contact-title {
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-transform: lowercase;
 }
 
-.project-card p {
+.form input,
+.form textarea {
+  width: 100%;
+  padding: 0.8rem 0;
+  margin-bottom: 1.4rem;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+  background: transparent;
+  font-family: inherit;
   font-size: 0.9rem;
-  line-height: 1.5;
 }
 
-.nav-links a {
+.form input:focus,
+.form textarea:focus {
+  outline: none;
+  border-color: black;
+}
+
+.submit-btn {
+  align-self: flex-start;
+  background: none;
+  border: 1px solid black;
+  padding: 0.6rem 1.6rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.submit-btn:hover {
+  background: black;
+  color: white;
+}
+
+/* SOCIALS */
+.contact-socials {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.socials-title {
   font-size: 0.9rem;
-  padding-bottom: 0.2rem;
+  margin-bottom: 1.6rem;
+  text-transform: lowercase;
+  opacity: 0.8;
 }
 
-.nav-links a.active {
-  border-bottom: 1px solid var(--color-dark);
+.socials-list {
+  list-style: none;
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
 }
 
+.socials-list a {
+  font-size: 0.85rem;
+  border: 1px solid rgba(0,0,0,0.3);
+  padding: 0.4rem 0.9rem;
+  transition: all 0.25s ease;
+}
+
+.socials-list a:hover {
+  background: black;
+  color: white;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+/* =========================
+   SOCIAL LINKS (HOVER COLORS)
+========================= */
+
+.social {
+  transition: color 0.25s ease;
+}
+
+/* Instagram */
+.social.instagram:hover {
+  color: #BC2A8D;
+}
+
+/* Snapchat */
+.social.snapchat:hover {
+  color: #FFFC00;
+}
+
+/* Spotify */
+.social.spotify:hover {
+  color: #1DB954;
+}
+
+/* Reddit */
+.social.reddit:hover {
+  color: #FF4500;
+}
+
+/* Pinterest */
+.social.pinterest:hover {
+  color: #E60023;
+}
+
+/* LinkedIn */
+.social.linkedin:hover {
+  color: #0A66C2;
+}
+
+/* X (Twitter) */
+.social.x:hover {
+  color: #faf9f6;
+}
+
+/* GitHub */
+.social.github:hover {
+  color: #faf9f6;
+}

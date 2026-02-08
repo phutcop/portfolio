@@ -9,15 +9,16 @@
 
 /* ======================
    THEME VARIABLES
+   (CHANGE COLORS HERE)
 ====================== */
 :root {
-  --bg-main: #9eccfa;
-  --text-main: #212842;
+  --bg-main: #f6f7f3;            /* MAIN BACKGROUND */
+  --text-main: #212842;          /* PRIMARY TEXT */
   --border-subtle: rgba(33, 40, 66, 0.25);
 }
 
 /* ======================
-   BASE STYLES
+   BASE
 ====================== */
 body {
   font-family: "Inter", system-ui, sans-serif;
@@ -27,22 +28,23 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* GLOBAL SECTION RHYTHM */
 section {
-  padding: 6rem 0;
+  padding: 6rem 2rem;            /* 🔥 VERTICAL SPACING SYSTEM */
 }
 
+/* LINKS */
 a {
   text-decoration: none;
   color: inherit;
   transition: opacity 0.2s ease;
 }
-
 a:hover {
   opacity: 0.7;
 }
 
 /* ======================
-   TYPOGRAPHY
+   TYPOGRAPHY SYSTEM
 ====================== */
 h1,
 h2,
@@ -61,10 +63,10 @@ h2 {
   margin-bottom: 1.5rem;
 }
 
+/* BASE PARAGRAPH (NO CENTERING) */
 p {
   font-size: 0.95rem;
-  max-width: 650px;
-  margin: 0 auto;
+  line-height: 1.7;
 }
 
 /* ======================
@@ -74,18 +76,22 @@ p {
   position: sticky;
   top: 0;
   z-index: 10;
+
   background-color: var(--bg-main);
+  padding: 1.5rem 4rem;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 4rem;
 }
 
+/* LOGO */
 .logo {
   font-weight: 600;
   font-size: 1rem;
 }
 
+/* NAV LINKS */
 .nav-links {
   display: flex;
   gap: 2rem;
@@ -101,11 +107,18 @@ p {
   border-bottom: 1px solid var(--text-main);
 }
 
+/* NAVBAR SCROLL EFFECT */
+.navbar-scrolled {
+  background-color: rgba(246, 247, 243, 0.85); /* bg-main w/ opacity */
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(33, 40, 66, 0.08);
+}
+
 /* ======================
    HERO
 ====================== */
 .hero {
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 80px); /* FULL VIEWPORT */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -116,15 +129,23 @@ p {
   max-width: 750px;
 }
 
-.name-block {
-  display: inline-block;
-  width: 120px;
-  height: 50px;
-  background-color: var(--text-main);
-  vertical-align: middle;
-  margin-left: 0.5rem;
+/* TYPEWRITER */
+.typewriter {
+  font-weight: 700;
+  color: #1f2937;
 }
 
+.cursor {
+  margin-left: 4px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+/* ROLES TAGS */
 .roles {
   display: flex;
   justify-content: center;
@@ -136,45 +157,7 @@ p {
   padding: 0.4rem 1.2rem;
   border: 1px solid var(--text-main);
   font-size: 0.8rem;
-  letter-spacing: 0.4px;
 }
-
-.hero p {
-  margin-bottom: 2rem;
-}
-
-.hero-cta {
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-  border-bottom: 1px solid var(--text-main);
-  padding-bottom: 0.2rem;
-}
-
-/* ===== TYPEWRITER EFFECT ===== */
-.typewriter {
-  font-weight: 700; /* BOLD */
-  color: #1f2937; /* blackish-grey aesthetic */
-  letter-spacing: -0.5px;
-}
-
-.cursor {
-  margin-left: 4px;
-  font-weight: 400;
-  animation: blink 1s infinite;
-}
-
-@keyframes blink {
-  0%,
-  50%,
-  100% {
-    opacity: 1;
-  }
-  25%,
-  75% {
-    opacity: 0;
-  }
-}
-
 
 /* ======================
    ABOUT
@@ -183,13 +166,17 @@ p {
   text-align: center;
 }
 
+.about p {
+  max-width: 650px;              /* 🔥 ABOUT TEXT WIDTH */
+  margin: 0 auto;
+}
+
 /* ======================
    WORK / PROJECTS
 ====================== */
 .work {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 2rem;
 }
 
 .projects {
@@ -237,47 +224,38 @@ p {
   padding: 0.6rem 1.4rem;
   border: 1px solid var(--text-main);
   font-size: 0.8rem;
-  letter-spacing: 0.4px;
 }
 
 /* ======================
-   RESPONSIVE (BASIC)
-====================== */
-@media (max-width: 900px) {
-  .projects {
-    grid-template-columns: 1fr;
-  }
-
-  .navbar {
-    padding: 1.5rem 2rem;
-  }
-
-  h1 {
-    font-size: 3rem;
-  }
-}
-
-/* ======================
-   NEO MINIMAL SECTION
+   NEO FEATURE SECTION
 ====================== */
 .neo {
   position: relative;
-  background-color: #1e2a4a; /* pastel dark blue */
+  background-color: #1e2a4a;     /* 🔥 DARK FEATURE COLOR */
   color: #f5f7fb;
   padding: 8rem 4rem;
   overflow: hidden;
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-/* ===== TITLE ===== */
+/* REVEAL STATE */
+.neo.neo-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* NEO TITLE */
 .neo-title {
-  font-family: "Playfair Display", serif;
   font-size: 3rem;
   margin-bottom: 4rem;
   position: relative;
   z-index: 2;
 }
 
-/* ===== GRID ===== */
+/* GRID */
 .neo-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -286,7 +264,7 @@ p {
   z-index: 2;
 }
 
-/* ===== CARDS ===== */
+/* CARDS */
 .neo-card {
   background: #eef1f8;
   border-radius: 20px;
@@ -304,8 +282,7 @@ p {
   filter: grayscale(0%);
 }
 
-
-/* ===== SUBTLE TEXTURE (OPTIONAL ELITE TOUCH) ===== */
+/* SUBTLE TEXTURE */
 .neo::after {
   content: "";
   position: absolute;
@@ -314,38 +291,17 @@ p {
   opacity: 0.06;
   pointer-events: none;
 }
-/* ===== NEO REVEAL ANIMATION ===== */
-.neo {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.neo.neo-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 
 /* ======================
-   RESUME SECTION
+   RESUME
 ====================== */
 .resume {
   text-align: center;
-  padding: 6rem 2rem;
-  background: transparent;
-}
-
-.resume-title {
-  font-family: "Playfair Display", serif;
-  font-size: 2.2rem;
-  margin-bottom: 1.5rem;
 }
 
 .resume-text {
   max-width: 520px;
   margin: 0 auto 2.5rem;
-  font-size: 0.95rem;
   opacity: 0.9;
 }
 
@@ -354,7 +310,6 @@ p {
   padding: 0.9rem 2.4rem;
   border: 1px solid var(--text-main);
   font-size: 0.85rem;
-  letter-spacing: 0.6px;
   transition: all 0.25s ease;
 }
 
@@ -364,52 +319,7 @@ p {
 }
 
 /* ======================
-   LOAD MORE INTERACTION
-====================== */
-.load-more-wrapper {
-  text-align: center;
-  padding: 4rem 0;
-}
-
-.load-more-btn {
-  background: none;
-  border: none;
-  font-family: "Inter", system-ui, sans-serif;
-  font-size: 0.9rem;
-  letter-spacing: 1px;
-  color: var(--text-main);
-  cursor: pointer;
-  position: relative;
-}
-
-.load-more-btn::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -6px;
-  width: 40px;
-  height: 1px;
-  background: var(--text-main);
-  transform: translateX(-50%);
-}
-
-.load-more-btn:hover {
-  opacity: 0.7;
-}
-
-/* ===== NAVBAR SCROLL EFFECT ===== */
-.navbar-scrolled {
-  background-color: rgba(158, 204, 250, 0.85); /* bg-main with opacity */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(33, 40, 66, 0.08);
-}
-
-/* ======================
    TIGER (DECORATIVE)
-====================== */
-/* ======================
-   TIGER (GLOBAL, FIXED)
 ====================== */
 .tiger {
   position: fixed;
@@ -427,10 +337,25 @@ p {
           brightness(0.9);
 }
 
-/* ===== HIDE ON MOBILE ===== */
+/* ======================
+   RESPONSIVE
+====================== */
+@media (max-width: 900px) {
+  .projects {
+    grid-template-columns: 1fr;
+  }
+
+  .navbar {
+    padding: 1.5rem 2rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+}
+
 @media (max-width: 768px) {
   .tiger {
     display: none;
   }
 }
-

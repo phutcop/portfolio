@@ -1,76 +1,58 @@
-import { useState, useRef } from "react";
-
-import Hero from "../components/Hero";
-import Neo from "../components/Neo";
-
-import tiger from "../assets/tiger.png";
+import { useEffect, useState } from "react";
 
 function Home() {
-  const [showNeo, setShowNeo] = useState(false);
+  const fullText = "yashraj dave!";
+  const [text, setText] = useState("");
+  const [index, setIndex] = useState(0);
 
-  const neoRef = useRef(null);
-  const topRef = useRef(null);
+  useEffect(() => {
+    if (index < fullText.length) {
+      const timer = setTimeout(() => {
+        setText((prev) => prev + fullText[index]);
+        setIndex((prev) => prev + 1);
+      }, 80);
 
-  const handleLoadMore = () => {
-    setShowNeo(true);
+      return () => clearTimeout(timer);
+    }
+  }, [index]);
 
-    setTimeout(() => {
-      neoRef.current?.scrollIntoView({
+  const scrollToAbout = () => {
+    const aboutSection = document.getElementById("about");
+    if (aboutSection) {
+      aboutSection.scrollIntoView({
         behavior: "smooth",
-        block: "start",
+        block: "start", // 👈 snap perfectly to top
       });
-    }, 100);
-  };
-
-  const handleLoadLess = () => {
-    setShowNeo(false);
-
-    setTimeout(() => {
-      topRef.current?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }, 100);
+    }
   };
 
   return (
-    <>
-      {/* Top anchor */}
-      <div ref={topRef}></div>
+    <section id="home" className="section home">
+      <div className="home-content">
+        <h1 className="home-title">
+          hi, <br />
+          i am{" "}
+          <span className="typewriter">
+            {text}
+            <span className="cursor">|</span>
+          </span>
+        </h1>
 
-      <Hero />
+        <p className="home-text">
+          this portfolio will guide you from getting to know me to exploring my
+          work, and if that isn’t enough, you can always contact me.
+        </p>
+      </div>
 
-      {!showNeo && (
-        <div className="load-more-wrapper">
-          <button className="load-more-btn" onClick={handleLoadMore}>
-            Load more ↓
-          </button>
-        </div>
-      )}
-
-      {showNeo && (
-        <>
-          <div ref={neoRef}>
-            <Neo />
-          </div>
-
-          <div className="load-more-wrapper">
-            <button className="load-more-btn" onClick={handleLoadLess}>
-              Load less ↑
-            </button>
-          </div>
-        </>
-      )}
-
-      {/* Tiger is visible everywhere EXCEPT when Neo is shown */}
-      {!showNeo && (
-        <img
-          src={tiger}
-          alt="Illustrated tiger"
-          className="tiger"
-        />
-      )}
-    </>
+      {/* ↓ SCROLL ARROW */}
+      <button
+        className="scroll-down"
+        aria-label="Scroll to about"
+        onClick={scrollToAbout}
+      >
+        ↓
+      </button>
+    </section>
   );
 }
 
