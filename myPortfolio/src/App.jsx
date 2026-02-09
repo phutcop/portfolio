@@ -53,7 +53,7 @@ function App() {
 
         {/* RESUME → GOOGLE DRIVE */}
         <a
-          href="https://drive.google.com/file/d/1z3mmNB7gDHm6TLZV5aDmV7BsN3bpfOX_/view?usp=sharing"
+          href="https://drive.google.com/file/d/1WSMhn7ML2IljNAkOkW3XvqsBSfje1Z9l/view?usp=drive_link"
           target="_blank"
           rel="noreferrer"
         >
