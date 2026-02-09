@@ -1245,3 +1245,40 @@ body {
   90%  { opacity: 1; }
   100% { opacity: 0; }
 }
+/* =====================================================
+   MOBILE COLOR FIXES
+   Fix blue text/icons + invisible buttons
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+  /* ---------------------------------
+     WORK SECTION — FIX BLUE TEXT & +
+  ---------------------------------- */
+  .work-header,
+  .work-header span,
+  .work-symbol,
+  .work-arrow {
+    color: var(--text-main) !important; /* force dark theme color */
+  }
+
+  .work-header {
+    font-weight: 500;
+  }
+
+  /* ---------------------------------
+     CONTACT — FIX SEND BUTTON VISIBILITY
+  ---------------------------------- */
+  .submit-btn {
+    background: transparent;
+    color: var(--text-main);           /* force visible text */
+    border: 1px solid var(--text-main);
+  }
+
+  .submit-btn:hover,
+  .submit-btn:active {
+    background: var(--text-main);
+    color: #faf9f6;                    /* white text on dark */
+  }
+
+}
