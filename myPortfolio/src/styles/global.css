@@ -1021,3 +1021,48 @@ body {
     row-gap: 0.6rem;
   }
 }
+/* =====================================================
+   CONTACT SOCIALS — MOBILE VISIBILITY FIX
+   Ensures socials are NEVER hidden behind bottom nav
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+  /* ---------------------------------
+     Reserve space for mobile nav
+  ---------------------------------- */
+  .content {
+    padding-bottom: 6.5rem; /* 🔑 space for bottom nav */
+  }
+
+  /* ---------------------------------
+     Contact section safety
+  ---------------------------------- */
+  #contact {
+    min-height: auto;       /* prevent vh clipping */
+    padding-bottom: 5rem;   /* extra breathing room */
+  }
+
+  /* ---------------------------------
+     Force socials into view
+  ---------------------------------- */
+  #contact .contact-socials {
+    margin-bottom: 3rem;   /* keeps above nav */
+  }
+
+  #contact .socials-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;       /* wrap if needed */
+    gap: 0.7rem;
+
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  #contact .socials-list a {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+}

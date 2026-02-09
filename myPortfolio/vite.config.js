@@ -1,38 +1,51 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-// https://vitejs.dev/config/
+/**
+ * Vite configuration
+ * --------------------------------------------------
+ * ✔ GitHub Pages deployment
+ * ✔ React support
+ * ✔ Mobile-safe
+ * ✔ Clean build output
+ *
+ * Repo name: portfolio
+ * Live URL: https://phutcop.github.io/portfolio/
+ */
 export default defineConfig({
+  /* ----------------------------
+     PLUGINS
+  ----------------------------- */
   plugins: [react()],
 
-  /**
-   * 🔥 IMPORTANT FOR GITHUB PAGES
-   * Repo name = portfolio
-   * Final URL → https://<username>.github.io/portfolio/
-   */
+  /* ----------------------------
+     BASE PATH (🔥 REQUIRED)
+     Must match GitHub repo name
+  ----------------------------- */
   base: "/portfolio/",
 
-  /**
-   * BUILD CONFIG
-   */
+  /* ----------------------------
+     BUILD CONFIGURATION
+  ----------------------------- */
   build: {
-    outDir: "dist",        // output folder (do NOT change for gh-pages)
-    assetsDir: "assets",   // where JS/CSS/images go
-    sourcemap: false,      // set true only if debugging prod
+    outDir: "dist",        // required for gh-pages
+    assetsDir: "assets",   // JS / CSS / images
+    sourcemap: false,      // enable only for debugging
     emptyOutDir: true
   },
 
-  /**
-   * DEV SERVER
-   */
+  /* ----------------------------
+     DEV SERVER
+  ----------------------------- */
   server: {
-    port: 5173,            // default Vite port
-    open: true             // auto-open browser
+    port: 5173,
+    open: true
   },
 
-  /**
-   * PREVIEW SERVER (after build)
-   */
+  /* ----------------------------
+     PREVIEW SERVER
+     (npm run preview)
+  ----------------------------- */
   preview: {
     port: 4173
   }
