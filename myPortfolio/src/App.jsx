@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import "./styles/global.css";
 
 /* PANEL ICONS */
@@ -13,7 +14,7 @@ import Home from "./pages/Home";
 import About from "./components/About";
 import Work from "./components/Work";
 import Skills from "./components/Skills";
-import ContactPage from "./pages/ContactPage"; // ✅ CORRECT FILE
+import ContactPage from "./pages/ContactPage";
 
 function App() {
   const scrollToSection = (id) => {
@@ -21,9 +22,41 @@ function App() {
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
+  /* =====================================================
+     PHASE 4 — ACTIVE SECTION DETECTION (MOBILE NAV READY)
+     ===================================================== */
+  useEffect(() => {
+    const sections = document.querySelectorAll(".section");
+    const navLinks = document.querySelectorAll(".mobile-nav a");
+
+    if (!sections.length || !navLinks.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            navLinks.forEach((link) => {
+              link.classList.remove("active");
+              if (
+                link.getAttribute("href") === `#${entry.target.id}`
+              ) {
+                link.classList.add("active");
+              }
+            });
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="app-layout">
-      {/* LEFT ICON PANEL */}
+      {/* LEFT ICON PANEL (DESKTOP) */}
       <aside className="icon-panel">
         <button onClick={() => scrollToSection("home")}>
           <img src={homeImg} alt="home" />
@@ -45,13 +78,11 @@ function App() {
           <span>skills</span>
         </button>
 
-        {/* ✅ CONTACT ICON */}
         <button onClick={() => scrollToSection("contact")}>
           <img src={sectionsImg} alt="contact" />
           <span>contact</span>
         </button>
 
-        {/* RESUME → GOOGLE DRIVE */}
         <a
           href="https://drive.google.com/file/d/1WSMhn7ML2IljNAkOkW3XvqsBSfje1Z9l/view?usp=drive_link"
           target="_blank"
@@ -80,7 +111,6 @@ function App() {
           <Skills />
         </section>
 
-        {/* ✅ CONTACT SECTION (NOW WORKS) */}
         <section id="contact" className="section">
           <ContactPage />
         </section>

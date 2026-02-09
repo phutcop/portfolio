@@ -557,3 +557,434 @@ body {
 .social.github:hover {
   color: #faf9f6;
 }
+/* =====================================================
+   MOBILE INTERFACE – PHASE 1 (STABILITY FIRST)
+   Purpose:
+   - Remove glitches
+   - Allow natural scrolling
+   - Disable desktop-only behaviors
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+  /* ---------------------------------
+     GLOBAL SCROLL FIX
+     Enables normal mobile scrolling
+  ---------------------------------- */
+  body {
+    overflow: auto;            /* allow touch scrolling */
+  }
+
+  /* ---------------------------------
+     DISABLE DESKTOP SCROLL SNAP
+  ---------------------------------- */
+  .content {
+    scroll-snap-type: none;    /* remove snap */
+  }
+
+  .section {
+    scroll-snap-align: unset;
+    min-height: auto;          /* avoid vh issues on mobile */
+    padding: 4rem 1.5rem;      /* mobile-friendly spacing */
+    align-items: flex-start;   /* prevent vertical centering bugs */
+  }
+
+  /* ---------------------------------
+     HIDE LEFT ICON PANEL (DESKTOP ONLY)
+  ---------------------------------- */
+  .icon-panel {
+    display: none;
+  }
+
+  .content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  /* ---------------------------------
+     REMOVE DESKTOP NAV ELEMENTS
+  ---------------------------------- */
+  .section-nav {
+    display: none;
+  }
+
+  .scroll-down {
+    display: none;
+  }
+
+  .tiger {
+    display: none;
+  }
+
+  /* ---------------------------------
+     ABOUT SECTION FIXES
+  ---------------------------------- */
+  .about-bg-word {
+    font-size: 7rem;                 /* reduce oversized text */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.06;                   /* softer background */
+  }
+
+  .about-layout {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  /* ---------------------------------
+     WORK / SKILLS WIDTH SAFETY
+  ---------------------------------- */
+  .work-wrapper,
+  .skills-wrapper {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* ---------------------------------
+     CONTACT PAGE STACKING
+  ---------------------------------- */
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+}
+/* =====================================================
+   MOBILE INTERFACE – PHASE 2 (REAL MOBILE UI)
+   Purpose:
+   - Mobile-first typography
+   - Clear section rhythm
+   - Comfortable reading & tapping
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+  /* ---------------------------------
+     GLOBAL TYPE SCALE (MOBILE)
+  ---------------------------------- */
+  body {
+    font-size: 15px;              /* base text size */
+    line-height: 1.7;
+  }
+
+  h1, h2, h3 {
+    line-height: 1.25;
+  }
+
+  /* ---------------------------------
+     SECTION RHYTHM
+  ---------------------------------- */
+  .section {
+    padding: 3.5rem 1.5rem;
+  }
+
+  .section + .section {
+    border-top: 1px solid rgba(0,0,0,0.08); /* subtle divider */
+  }
+
+  /* ---------------------------------
+     HOME (MOBILE HERO)
+  ---------------------------------- */
+  .home-content {
+    max-width: 100%;
+  }
+
+  .home-title {
+    font-size: 2.4rem;
+  }
+
+  .home-text {
+    font-size: 0.95rem;
+  }
+
+  /* ---------------------------------
+     ABOUT (READABLE STACK)
+  ---------------------------------- */
+  .about-title {
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .about-content p {
+    font-size: 0.95rem;
+  }
+
+  /* ---------------------------------
+     WORK (LIST-FOCUSED)
+  ---------------------------------- */
+  .work-title {
+    font-size: 1.4rem;
+  }
+
+  .work-header {
+    font-size: 0.95rem;
+  }
+
+  .work-description {
+    font-size: 0.9rem;
+  }
+
+  /* ---------------------------------
+     SKILLS (CENTERED & CLEAN)
+  ---------------------------------- */
+  .skills-title {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  .skills-subtitle {
+    display: block;
+    margin-top: 0.4rem;
+    font-size: 0.85rem;
+    opacity: 0.7;
+  }
+
+  .skills-list li {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+  }
+
+  .skills-list .dot {
+    opacity: 0.4;
+  }
+
+  /* ---------------------------------
+     CONTACT (TOUCH-FIRST)
+  ---------------------------------- */
+  .contact-title {
+    font-size: 1.4rem;
+  }
+
+  .form input,
+  .form textarea {
+    font-size: 0.95rem;
+    padding: 0.9rem 0;
+  }
+
+  .submit-btn {
+    padding: 0.7rem 1.8rem;
+    font-size: 0.9rem;
+  }
+
+  .socials-list {
+    gap: 0.8rem;
+  }
+
+  .socials-list a {
+    padding: 0.55rem 1.1rem;
+    font-size: 0.85rem;
+  }
+
+}
+/* =====================================================
+   MOBILE NAVIGATION – PHASE 3
+   Bottom Navigation Bar (Mobile Only)
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+  /* ---------------------------------
+     CONTENT OFFSET (so nav doesn’t cover content)
+  ---------------------------------- */
+  .content {
+    padding-bottom: 4.8rem; /* height of bottom nav */
+  }
+
+  /* ---------------------------------
+     BOTTOM NAV BAR
+  ---------------------------------- */
+  .mobile-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 4.4rem;
+
+    background: rgba(250, 249, 246, 0.95);
+    backdrop-filter: blur(10px);
+
+    border-top: 1px solid rgba(0,0,0,0.12);
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    z-index: 50;
+  }
+
+  /* ---------------------------------
+     NAV ITEMS
+  ---------------------------------- */
+  .mobile-nav a {
+    text-decoration: none;
+    color: rgba(0,0,0,0.6);
+
+    font-size: 0.7rem;
+    text-transform: lowercase;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+
+    transition: color 0.2s ease;
+  }
+
+  .mobile-nav a span {
+    font-size: 1.1rem; /* icon size */
+    line-height: 1;
+  }
+
+  /* ---------------------------------
+     ACTIVE / HOVER STATE
+  ---------------------------------- */
+  .mobile-nav a:hover {
+    color: black;
+  }
+
+}
+
+/* ---------------------------------
+   DESKTOP: HIDE MOBILE NAV
+---------------------------------- */
+@media (min-width: 769px) {
+  .mobile-nav {
+    display: none;
+  }
+}
+/* =====================================================
+   PHASE 4 — ACTIVE SECTION INDICATOR (MOBILE)
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+  /* Active link style */
+  .mobile-nav a.active {
+    color: black;
+    font-weight: 600;
+  }
+
+  /* Small underline dot */
+  .mobile-nav a.active::after {
+    content: "";
+    width: 4px;
+    height: 4px;
+    background: black;
+    border-radius: 50%;
+    margin-top: 2px;
+  }
+
+}
+/* =========================
+   PHASE 5 — SWIPE NAVIGATION
+   Enables smooth vertical swipe between sections
+========================= */
+
+@media (max-width: 768px) {
+  .content {
+    overflow-y: auto;                 /* allow touch scrolling */
+    scroll-snap-type: y mandatory;    /* snap after swipe */
+    -webkit-overflow-scrolling: touch;/* iOS smooth scroll */
+  }
+
+  .section {
+    scroll-snap-align: start;         /* each section snaps */
+  }
+}
+/* =========================
+   PHASE 6 — AUTO-HIDE MOBILE NAV
+   Hides nav on scroll down, shows on scroll up
+========================= */
+
+@media (max-width: 768px) {
+  .mobile-nav {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .mobile-nav.hidden {
+    transform: translateY(100%); /* slides nav down */
+    opacity: 0;
+  }
+}
+/* =========================
+   PHASE 7 — SECTION TRANSITIONS
+   Fade + subtle slide animation
+========================= */
+
+@media (max-width: 768px) {
+  .section {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
+  }
+
+  .section.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* =========================
+   PHASE 8 — MOBILE-ONLY LAYOUT
+   Completely different structure on mobile
+========================= */
+
+@media (max-width: 768px) {
+
+  /* REMOVE LEFT PANEL */
+  .icon-panel {
+    display: none;
+  }
+
+  /* FULL-WIDTH CONTENT */
+  .content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  /* SECTION PADDING OPTIMIZED FOR MOBILE */
+  .section {
+    padding: 4rem 1.5rem; /* vertical | horizontal */
+    align-items: flex-start;
+  }
+
+  /* HIDE DECORATIVE TIGER */
+  .tiger {
+    display: none;
+  }
+
+  /* MOBILE NAV PLACEHOLDER (Phase 3 JSX will attach here) */
+  .mobile-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 64px;
+
+    background: rgba(250, 249, 246, 0.96);
+    border-top: 1px solid rgba(0,0,0,0.1);
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    z-index: 50;
+  }
+
+  .mobile-nav a {
+    font-size: 0.75rem;
+    text-transform: lowercase;
+    opacity: 0.6;
+    transition: opacity 0.25s ease;
+  }
+
+  .mobile-nav a.active {
+    opacity: 1;
+    font-weight: 600;
+  }
+}
