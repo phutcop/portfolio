@@ -988,3 +988,36 @@ body {
     font-weight: 600;
   }
 }
+/* =====================================================
+   CONTACT SOCIALS — SINGLE LINE FIX
+   Prevents overflow + layout bugs
+   ===================================================== */
+
+#contact .socials-list {
+  display: flex;
+  flex-direction: row;        /* 🔑 one line */
+  flex-wrap: nowrap;          /* 🔑 do NOT stack vertically */
+  gap: 0.8rem;
+
+  align-items: center;
+  justify-content: flex-start;
+
+  overflow: hidden;           /* no weird spill */
+}
+
+/* Individual social buttons */
+#contact .socials-list a {
+  white-space: nowrap;        /* 🔑 prevents text breaking */
+  flex-shrink: 0;             /* 🔑 prevents collapsing */
+
+  padding: 0.45rem 0.9rem;
+  font-size: 0.85rem;
+}
+
+/* Mobile safety: allow wrap ONLY on very small screens */
+@media (max-width: 480px) {
+  #contact .socials-list {
+    flex-wrap: wrap;          /* wrap gracefully */
+    row-gap: 0.6rem;
+  }
+}
