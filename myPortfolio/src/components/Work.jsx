@@ -37,7 +37,7 @@ function Work() {
   return (
     <section id="works" className="section work">
       <div className="work-wrapper">
-        <h2 className="work-title">work:</h2>
+        <h2 className="work-title">my works:</h2>
 
         <ul className="work-list">
           {items.map((item, index) => {
