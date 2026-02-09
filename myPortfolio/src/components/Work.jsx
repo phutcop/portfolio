@@ -24,6 +24,11 @@ function Work() {
         "i presented a paper titled “promoting indigenous products through digital marketing: a case for sustainable entrepreneurship” at fieis 2025 at kiss university, bhubaneshwar, exploring my interest in research.",
     },
     {
+      title: "student editor for college magazine",
+      description:
+        "i got an opportunity to work as a student editor for my college magazine, where i contributed to content creation, editing, and overall management of the publication.",
+    },
+    {
       title: "more coming soon…",
       description: "",
     },

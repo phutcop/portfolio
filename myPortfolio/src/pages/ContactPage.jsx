@@ -58,7 +58,7 @@ function Contact() {
 
         {/* RIGHT — SOCIAL LINKS */}
         <div className="contact-socials">
-          <h3 className="socials-title">socialize :)</h3>
+          <h3 className="socials-title">connect here :)</h3>
 
           <ul className="socials-list">
             <li>
