@@ -1159,3 +1159,89 @@ body {
     margin-bottom: 0 !important;
   }
 }
+/* =====================================================
+   🔥 FINAL MOBILE BOTTOM SPACE FIX
+   Fixes extra white space on Contact / Work
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+  /* 1️⃣ Remove forced full-screen height on mobile */
+  .section {
+    min-height: unset !important;
+  }
+
+  /* 2️⃣ Kill artificial bottom padding added earlier */
+  .content {
+    padding-bottom: 0 !important;
+  }
+
+  /* 3️⃣ Contact section should size to content ONLY */
+  #contact {
+    padding-bottom: 2rem !important;
+  }
+
+  /* 4️⃣ Prevent browser UI overlap illusion */
+  body {
+    overscroll-behavior-y: none;
+  }
+
+}
+/* =====================================================
+   RESUME — MOBILE ONLY (CONTACT SECTION)
+   ===================================================== */
+
+/* hide on desktop */
+.mobile-only {
+  display: none;
+}
+
+/* show on phone only */
+@media (max-width: 768px) {
+  .mobile-only {
+    display: block;
+  }
+
+  .resume-mobile {
+    border: 1px solid black;
+    background: black;
+    color: white !important;
+
+    padding: 0.45rem 1.1rem;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  .resume-mobile:hover {
+    background: transparent;
+    color: black !important;
+  }
+}
+/* =========================
+   CONTACT TOAST
+========================= */
+
+.contact-toast {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+
+  background: black;
+  color: white;
+
+  padding: 0.6rem 1.2rem;
+  font-size: 0.8rem;
+  border-radius: 999px;
+
+  opacity: 0.95;
+  z-index: 999;
+
+  animation: toastFade 3s ease forwards;
+}
+
+@keyframes toastFade {
+  0%   { opacity: 0; transform: translateY(8px); }
+  10%  { opacity: 1; transform: translateY(0); }
+  90%  { opacity: 1; }
+  100% { opacity: 0; }
+}
