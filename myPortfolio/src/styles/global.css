@@ -954,9 +954,9 @@ body {
   }
 
   /* HIDE DECORATIVE TIGER */
-  .tiger {
+  /* .tiger {
     display: none;
-  }
+  } */
 
   /* MOBILE NAV PLACEHOLDER (Phase 3 JSX will attach here) */
   .mobile-nav {
@@ -1065,4 +1065,97 @@ body {
     flex-shrink: 0;
   }
 
+}
+/* =====================================================
+   🔥 MOBILE EMERGENCY FIX
+   Make content visible on mobile
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+  /* FORCE sections to be visible */
+  .section {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+}
+/* =====================================================
+   CONTACT — MOBILE SOCIALS FIX
+   Single-row, scrollable, clean
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+  /* socials container */
+  .socials-list {
+    display: flex;
+    flex-wrap: nowrap;           /* 🔥 prevent wrapping */
+    overflow-x: auto;            /* allow horizontal scroll */
+    gap: 0.75rem;
+
+    padding-bottom: 0.5rem;      /* space from bottom */
+    margin-top: 0.5rem;
+
+    scrollbar-width: none;       /* Firefox */
+  }
+
+  /* hide scrollbar (Chrome / Safari) */
+  .socials-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* individual social buttons */
+  .socials-list a {
+    white-space: nowrap;         /* keep text on one line */
+    flex-shrink: 0;              /* don’t compress */
+    font-size: 0.8rem;
+    padding: 0.45rem 0.9rem;
+  }
+
+}
+/* =====================================================
+   TIGER — MOBILE ONLY (MOVE TO END)
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+  .tiger {
+    position: static;          /* 🔥 remove fixed */
+    display: block;
+
+    width: 120px;              /* slightly smaller for mobile */
+    margin: 3rem auto 1.5rem;  /* center + spacing */
+
+    opacity: 0.9;
+    pointer-events: none;
+  }
+
+}
+/* =====================================================
+   🔥 FINAL MOBILE CLEANUP — REMOVE BOTTOM GAP
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+  /* Remove artificial bottom spacing */
+  .content {
+    padding-bottom: 0 !important;
+  }
+
+  /* Contact section should size to content only */
+  #contact {
+    padding-bottom: 2rem !important;
+    min-height: auto !important;
+  }
+
+  /* Socials: no forced margin */
+  #contact .contact-socials {
+    margin-bottom: 0 !important;
+  }
+
+  /* Just in case any element is reserving space */
+  .section:last-child {
+    margin-bottom: 0 !important;
+  }
 }
