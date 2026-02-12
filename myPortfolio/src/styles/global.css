@@ -1291,3 +1291,32 @@ body {
 .work-description a:hover {
   opacity: 0.7;
 }
+.work-description strong {
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.project-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.project-link:hover {
+  opacity: 0.6;
+}
+.project-link {
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.project-link:hover {
+  opacity: 0.6;
+}

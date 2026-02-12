@@ -12,20 +12,15 @@ function Work() {
       title: "i spy — precision in the unnoticed",
       description: (
         <>
-          i spy is a react-based data analysis and visualization project that
-          demonstrates subtle digital fingerprinting using invisible unicode
-          variations. the system generates visually identical message versions,
-          assigns them to different recipients, and detects the source if a
-          version leaks.
-          <br /><br />
-          built with react + vite, fully frontend-based, and deployed on github pages.
+          a react-based project exploring invisible unicode fingerprinting to trace information leaks.
           <br /><br />
           <a
             href="https://phutcop.github.io/i-spy/"
             target="_blank"
             rel="noreferrer"
+            className="project-link"
           >
-            view live project →
+            view project ↗
           </a>
         </>
       ),
@@ -94,7 +89,6 @@ function Work() {
           })}
         </ul>
 
-        {/* ↓ SCROLL TO SKILLS */}
         <button
           className="scroll-down"
           onClick={() => scrollTo("skills")}
