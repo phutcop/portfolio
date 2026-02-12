@@ -9,6 +9,28 @@ function Work() {
 
   const items = [
     {
+      title: "i spy — precision in the unnoticed",
+      description: (
+        <>
+          i spy is a react-based data analysis and visualization project that
+          demonstrates subtle digital fingerprinting using invisible unicode
+          variations. the system generates visually identical message versions,
+          assigns them to different recipients, and detects the source if a
+          version leaks.
+          <br /><br />
+          built with react + vite, fully frontend-based, and deployed on github pages.
+          <br /><br />
+          <a
+            href="https://phutcop.github.io/i-spy/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            view live project →
+          </a>
+        </>
+      ),
+    },
+    {
       title: "media volunteer at aibf 2024",
       description:
         "i volunteered at the ahmedabad international book festival (2024 edition) as a media volunteer, where i took notes and wrote press notes, articles, and related content throughout the 10-day event.",
