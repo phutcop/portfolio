@@ -84,7 +84,7 @@ function App() {
         </button>
 
         <a
-          href="https://drive.google.com/file/d/1WSMhn7ML2IljNAkOkW3XvqsBSfje1Z9l/view?usp=drive_link"
+          href="https://drive.google.com/file/d/1wks35N4mGvlYNQwVWIavtJbyZH9aYruW/view?usp=sharing"
           target="_blank"
           rel="noreferrer"
         >
