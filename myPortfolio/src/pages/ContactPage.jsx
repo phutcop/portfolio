@@ -79,7 +79,7 @@ function Contact() {
             {/* MOBILE RESUME */}
             <li className="mobile-only">
               <a
-                href="https://drive.google.com/file/d/1wks35N4mGvlYNQwVWIavtJbyZH9aYruW/view?usp=sharing"
+                href="https://drive.google.com/file/d/1wks35N4mGvlYNQwVWIavtJbyZH9aYruW/view"
                 target="_blank"
                 rel="noreferrer"
                 className="resume-mobile"
