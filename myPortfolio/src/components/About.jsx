@@ -13,7 +13,7 @@ function About() {
           <h2 className="about-title">about me:</h2>
 
           <p>
-            i’m a 3rd year computer engineering student from institute of advanced
+            i’m a 4th year computer engineering student from institute of advanced
             research, gandhinagar, gujarat, currently exploring and learning as
             much as i can, with interests in web designing, data and
             visualisations.
