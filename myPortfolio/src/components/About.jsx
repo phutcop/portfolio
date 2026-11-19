@@ -1,8 +1,4 @@
-function About() {
-  const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
-
+function About({ onNext }) {
   return (
     <div className="about-inner">
       {/* BIG FADED WORD */}
@@ -10,7 +6,10 @@ function About() {
 
       <div className="about-layout">
         <div className="about-content">
+          <div className="about-heading">
           <h2 className="about-title">about me:</h2>
+          </div>
+          <div className="about-copy">
 
           <p>
             i’m a 4th year computer engineering student from institute of advanced
@@ -34,11 +33,12 @@ function About() {
           {/* ↓ SAME SCROLL ARROW AS HOME */}
           <button
             className="scroll-down"
-            onClick={() => scrollTo("works")}
+            onClick={onNext}
             aria-label="Scroll to works"
           >
             ↓
           </button>
+          </div>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./styles/global.css";
 
 /* PANEL ICONS */
@@ -17,68 +17,37 @@ import Skills from "./components/Skills";
 import ContactPage from "./pages/ContactPage";
 
 function App() {
-  const scrollToSection = (id) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
+  const [activeSection, setActiveSection] = useState("home");
 
-  /* =====================================================
-     PHASE 4 — ACTIVE SECTION DETECTION (MOBILE NAV READY)
-     ===================================================== */
   useEffect(() => {
-    const sections = document.querySelectorAll(".section");
-    const navLinks = document.querySelectorAll(".mobile-nav a");
-
-    if (!sections.length || !navLinks.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            navLinks.forEach((link) => {
-              link.classList.remove("active");
-              if (
-                link.getAttribute("href") === `#${entry.target.id}`
-              ) {
-                link.classList.add("active");
-              }
-            });
-          }
-        });
-      },
-      { threshold: 0.6 }
-    );
-
-    sections.forEach((section) => observer.observe(section));
-
-    return () => observer.disconnect();
-  }, []);
+    document.getElementById(activeSection)?.scrollTo({ top: 0 });
+  }, [activeSection]);
 
   return (
     <div className="app-layout">
       {/* LEFT ICON PANEL (DESKTOP) */}
       <aside className="icon-panel">
-        <button onClick={() => scrollToSection("home")}>
+        <button onClick={() => setActiveSection("home")} aria-current={activeSection === "home" ? "page" : undefined}>
           <img src={homeImg} alt="home" />
           <span>home</span>
         </button>
 
-        <button onClick={() => scrollToSection("about")}>
+        <button onClick={() => setActiveSection("about")} aria-current={activeSection === "about" ? "page" : undefined}>
           <img src={sectionsImg} alt="about" />
           <span>about</span>
         </button>
 
-        <button onClick={() => scrollToSection("works")}>
+        <button onClick={() => setActiveSection("works")} aria-current={activeSection === "works" ? "page" : undefined}>
           <img src={sectionsImg} alt="works" />
           <span>works</span>
         </button>
 
-        <button onClick={() => scrollToSection("skills")}>
+        <button onClick={() => setActiveSection("skills")} aria-current={activeSection === "skills" ? "page" : undefined}>
           <img src={sectionsImg} alt="skills" />
           <span>skills</span>
         </button>
 
-        <button onClick={() => scrollToSection("contact")}>
+        <button onClick={() => setActiveSection("contact")} aria-current={activeSection === "contact" ? "page" : undefined}>
           <img src={sectionsImg} alt="contact" />
           <span>contact</span>
         </button>
@@ -95,11 +64,11 @@ function App() {
 
       {/* MAIN CONTENT */}
       <main className="content">
-        <section id="home" className="section home"><Home /></section>
-        <section id="about" className="section about-section"><About /></section>
-        <section id="works" className="section work"><Work /></section>
-        <section id="skills" className="section skills"><Skills /></section>
-        <section id="contact" className="section contact"><ContactPage /></section>
+        <section id="home" className="section home" hidden={activeSection !== "home"}><Home onNext={() => setActiveSection("about")} /></section>
+        <section id="about" className="section about-section" hidden={activeSection !== "about"}><About onNext={() => setActiveSection("works")} /></section>
+        <section id="works" className="section work" hidden={activeSection !== "works"}><Work onNext={() => setActiveSection("skills")} /></section>
+        <section id="skills" className="section skills" hidden={activeSection !== "skills"}><Skills onNext={() => setActiveSection("contact")} /></section>
+        <section id="contact" className="section contact" hidden={activeSection !== "contact"}><ContactPage onHome={() => setActiveSection("home")} /></section>
       </main>
 
       {/* 🐯 TIGER */}

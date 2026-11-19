@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function Home() {
+function Home({ onNext }) {
   const fullText = "yashraj dave!";
   const [text, setText] = useState("");
   const [index, setIndex] = useState(0);
@@ -15,16 +15,6 @@ function Home() {
       return () => clearTimeout(timer);
     }
   }, [index]);
-
-  const scrollToAbout = () => {
-    const aboutSection = document.getElementById("about");
-    if (aboutSection) {
-      aboutSection.scrollIntoView({
-        behavior: "smooth",
-        block: "start", // 👈 snap perfectly to top
-      });
-    }
-  };
 
   return (
     <div className="home-inner">
@@ -48,7 +38,7 @@ function Home() {
       <button
         className="scroll-down"
         aria-label="Scroll to about"
-        onClick={scrollToAbout}
+        onClick={onNext}
       >
         ↓
       </button>

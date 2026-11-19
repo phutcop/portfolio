@@ -1,11 +1,7 @@
 import { useState } from "react";
 
-function Contact() {
+function Contact({ onHome }) {
   const [sent, setSent] = useState(false);
-
-  const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,7 +38,7 @@ function Contact() {
         {/* HOME ARROW */}
         <button
           className="scroll-down up"
-          onClick={() => scrollTo("home")}
+          onClick={onHome}
           aria-label="Back to home"
         >
           ↑

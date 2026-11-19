@@ -1,11 +1,7 @@
 import { useState } from "react";
 
-function Work() {
+function Work({ onNext }) {
   const [activeIndex, setActiveIndex] = useState(null);
-
-  const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
 
   const items = [
     {
@@ -135,7 +131,7 @@ function Work() {
 
         <button
           className="scroll-down"
-          onClick={() => scrollTo("skills")}
+          onClick={onNext}
           aria-label="Scroll to skills"
         >
           ↓

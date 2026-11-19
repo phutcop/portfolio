@@ -413,3 +413,164 @@ p {
     display: none;
   }
 }
+
+/* About: keep the existing copy in a balanced editorial layout. */
+.about-section .about-layout {
+  width: min(100%, 1100px);
+  margin-inline: auto;
+}
+
+.about-section .about-content {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.52fr) minmax(0, 1fr);
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: start;
+}
+
+.about-section .about-heading {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1.5rem;
+}
+
+.about-section .about-title {
+  font-size: clamp(2rem, 3.3vw, 3rem);
+  margin: 0;
+  text-align: left;
+}
+
+.about-section .about-copy {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1.35rem;
+}
+
+.about-section .about-copy p {
+  max-width: 58ch;
+  margin: 0 0 1.05rem;
+  text-align: left;
+  font-size: clamp(0.98rem, 1.15vw, 1.1rem);
+  line-height: 1.7;
+}
+
+.about-section .about-copy .scroll-down {
+  margin-top: 0.35rem;
+}
+
+/* A simple bullet list; descriptions open in place. */
+.skills .skills-wrapper {
+  max-width: 1000px;
+  padding-right: 0;
+}
+
+.skills .skills-title {
+  margin-bottom: 1.5rem;
+}
+
+.skills-bullet-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: clamp(1.5rem, 3vw, 3rem);
+  row-gap: 1rem;
+  list-style: none;
+  padding-left: 1.45rem;
+  margin: 0;
+}
+
+.skills-bullet-list li {
+  position: relative;
+  min-height: 5rem;
+  padding-left: 0.35rem;
+  margin: 0;
+}
+
+.skills-bullet-list li::before {
+  content: "•";
+  position: absolute;
+  top: 0;
+  left: -1.05rem;
+  font-size: 0.8rem;
+  line-height: 1.5rem;
+}
+
+.skill-bullet-button {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text-main);
+  font: 400 1.02rem/1.5 "Inter", system-ui, sans-serif;
+  text-align: left;
+  cursor: pointer;
+}
+
+.skill-bullet-name {
+  display: block;
+  font-weight: 600;
+}
+
+.skill-bullet-description {
+  display: none;
+  margin-top: 0.65rem;
+  color: rgba(33, 40, 66, 0.76);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.skill-bullet-button:focus-visible .skill-bullet-description,
+.skill-bullet-button.active .skill-bullet-description {
+  display: block;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .skill-bullet-button:hover .skill-bullet-description {
+    display: block;
+  }
+}
+
+.skill-bullet-button:focus-visible {
+  outline: 2px solid var(--text-main);
+  outline-offset: 2px;
+}
+
+@media (max-width: 1100px) {
+  .about-section .about-content {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .about-section .about-layout {
+    max-width: 650px;
+  }
+
+  .about-section .about-copy {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .about-section .about-copy p {
+    max-width: 60ch;
+    font-size: 1rem;
+  }
+
+  .tiger {
+    display: none;
+  }
+
+  .skills-bullet-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-bullet-list {
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+  }
+
+  .skills-bullet-list li {
+    min-height: 2.8rem;
+  }
+
+  .skill-bullet-button {
+    font-size: 0.96rem;
+  }
+}
