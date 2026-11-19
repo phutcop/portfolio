@@ -5,25 +5,6 @@ function Work({ onNext }) {
 
   const items = [
     {
-      title: "perficient one — brand & website",
-      description: (
-        <>
-          a client project i built with arav patel: a responsive website for a
-          construction and project management firm, with project stories, an
-          enquiry form, and a matching brand toolkit.
-          <br /><br />
-          <a
-            href="https://perficientone.com/"
-            target="_blank"
-            rel="noreferrer"
-            className="project-link"
-          >
-            view website ↗
-          </a>
-        </>
-      ),
-    },
-    {
       title: "building nosta — a social time capsule",
       description: (
         <>
@@ -46,6 +27,24 @@ function Work({ onNext }) {
       title: "finshyt — expense analysis prototype",
       description:
         "i’m prototyping an expense analysis tool that imports an annual ledger, compares monthly and category spending, and answers questions from recorded transactions. it currently runs as a local demo; sign-in and data storage are not production-ready.",
+    },
+    {
+      title: "perficient one — brand & website",
+      description: (
+        <>
+          a responsive website for a construction and project management firm,
+          with project stories, an enquiry form, and a matching brand toolkit.
+          <br /><br />
+          <a
+            href="https://perficientone.com/"
+            target="_blank"
+            rel="noreferrer"
+            className="project-link"
+          >
+            view website ↗
+          </a>
+        </>
+      ),
     },
     {
       title: "i spy — precision in the unnoticed",
