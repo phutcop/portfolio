@@ -95,25 +95,11 @@ function App() {
 
       {/* MAIN CONTENT */}
       <main className="content">
-        <section id="home" className="section home">
-          <Home />
-        </section>
-
-        <section id="about" className="section about-section">
-          <About />
-        </section>
-
-        <section id="works" className="section">
-          <Work />
-        </section>
-
-        <section id="skills" className="section">
-          <Skills />
-        </section>
-
-        <section id="contact" className="section">
-          <ContactPage />
-        </section>
+        <Home />
+        <About />
+        <Work />
+        <Skills />
+        <ContactPage />
       </main>
 
       {/* 🐯 TIGER */}
