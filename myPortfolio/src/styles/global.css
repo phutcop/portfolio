@@ -390,7 +390,7 @@ body {
 
 /* when open */
 .work-description.open {
-  max-height: 200px;             /* 🔥 increase if text grows */
+  max-height: 320px;
   opacity: 1;
   margin-top: 0.8rem;
 }

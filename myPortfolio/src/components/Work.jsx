@@ -9,6 +9,25 @@ function Work() {
 
   const items = [
     {
+      title: "perficient one — brand & website",
+      description: (
+        <>
+          a client project i built with arav patel: a responsive website for a
+          construction and project management firm, with project stories, an
+          enquiry form, and a matching brand toolkit.
+          <br /><br />
+          <a
+            href="https://perficientone.com/"
+            target="_blank"
+            rel="noreferrer"
+            className="project-link"
+          >
+            view website ↗
+          </a>
+        </>
+      ),
+    },
+    {
       title: "i spy — precision in the unnoticed",
       description: (
         <>
