@@ -209,21 +209,82 @@ p {
    SKILLS
 ====================== */
 .skills {
-  text-align: center;
+  text-align: left;
+}
+
+.skills-wrapper {
+  width: 100%;
+  max-width: 960px;
+}
+
+.skills-title {
+  margin: 0;
+  text-align: left;
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  line-height: 1.1;
+}
+
+.skills-eyebrow {
+  margin-bottom: 0.8rem;
+  color: rgba(33, 40, 66, 0.58);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
 .skills-list {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-top: 2rem;
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+  border-top: 1px solid var(--border-subtle);
 }
 
-.skills-list span {
-  padding: 0.6rem 1.4rem;
-  border: 1px solid var(--text-main);
-  font-size: 0.8rem;
+.skill-group {
+  display: grid;
+  grid-template-columns: 3rem minmax(10rem, 0.8fr) 1.5fr;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1.35rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.skill-index {
+  color: rgba(33, 40, 66, 0.48);
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.skill-group h3 {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.skill-group p {
+  color: rgba(33, 40, 66, 0.76);
+  font-size: 0.92rem;
+}
+
+.skill-group p span {
+  padding: 0 0.4rem;
+  color: rgba(33, 40, 66, 0.38);
+}
+
+@media (max-width: 768px) {
+  .skills-title {
+    font-size: 2rem;
+    text-align: left;
+  }
+
+  .skill-group {
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: 0.35rem 0.8rem;
+    padding: 1rem 0;
+  }
+
+  .skill-group p {
+    grid-column: 2;
+    font-size: 0.88rem;
+  }
 }
 
 /* ======================

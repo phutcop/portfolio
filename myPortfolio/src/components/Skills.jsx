@@ -7,47 +7,30 @@ function Skills() {
 
   return (
     <section id="skills" className="section skills">
+      <div className="about-bg-word" aria-hidden="true">skills</div>
       <div className="skills-wrapper">
-        <h2 className="skills-title">
-          skills & hobbies <br />
-          <span className="skills-subtitle">
-            jack of all, ace of none (hehe)
-          </span>
-        </h2>
+        <div className="skills-heading">
+          <p className="skills-eyebrow">A few things I work with</p>
+          <h2 className="skills-title">Skills & interests</h2>
+        </div>
 
-        <ul className="skills-list">
-          <li>
-            <span>coral</span>
-            <span className="dot">·</span>
-            <span>canva</span>
-            <span className="dot">·</span>
-            <span>power bi</span>
-          </li>
-
-          <li>
-            <span>html</span>
-            <span className="dot">·</span>
-            <span>css</span>
-            <span className="dot">·</span>
-            <span>python</span>
-          </li>
-
-          <li>
-            <span>video editing</span>
-            <span className="dot">·</span>
-            <span>i can lowkey act too</span>
-            <span className="dot">·</span>
-            <span>travelling</span>
-          </li>
-
-          <li>
-            <span>minecraft</span>
-            <span className="dot">·</span>
-            <span>poker</span>
-            <span className="dot">·</span>
-            <span>etc.</span>
-          </li>
-        </ul>
+        <div className="skills-list">
+          <div className="skill-group">
+            <span className="skill-index">01</span>
+            <h3>Design & media</h3>
+            <p>CorelDRAW <span>·</span> Canva <span>·</span> Video editing</p>
+          </div>
+          <div className="skill-group">
+            <span className="skill-index">02</span>
+            <h3>Data & development</h3>
+            <p>Power BI <span>·</span> HTML <span>·</span> CSS <span>·</span> Python</p>
+          </div>
+          <div className="skill-group">
+            <span className="skill-index">03</span>
+            <h3>Outside work</h3>
+            <p>Acting <span>·</span> Travel <span>·</span> Minecraft <span>·</span> Poker</p>
+          </div>
+        </div>
 
         {/* ↓ SAME SCROLL ARROW AS HOME */}
         <button

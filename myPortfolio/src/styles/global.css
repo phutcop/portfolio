@@ -227,9 +227,25 @@ body {
   font-size: 18rem;
   font-weight: 800;
   color: rgba(0, 0, 0, 0.04);
+  z-index: 0;
 
   pointer-events: none;
   user-select: none;
+}
+
+.about-layout,
+.work-wrapper,
+.skills-wrapper,
+.contact-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.work,
+.skills,
+.contact {
+  position: relative;
+  overflow: hidden;
 }
 
 .about-strip {
