@@ -95,7 +95,7 @@ function Work() {
   ];
 
   return (
-    <section id="works" className="section work">
+    <div className="work-inner">
       <div className="about-bg-word" aria-hidden="true">works</div>
       <div className="work-wrapper">
         <h2 className="work-title">my works:</h2>
@@ -141,7 +141,7 @@ function Work() {
           ↓
         </button>
       </div>
-    </section>
+    </div>
   );
 }
 

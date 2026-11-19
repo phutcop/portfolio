@@ -28,7 +28,7 @@ function Contact() {
   };
 
   return (
-    <section id="contact" className="section contact">
+    <div className="contact-inner">
       <div className="about-bg-word" aria-hidden="true">contact</div>
       <div className="contact-wrapper">
 
@@ -100,7 +100,7 @@ function Contact() {
         </div>
 
       </div>
-    </section>
+    </div>
   );
 }
 

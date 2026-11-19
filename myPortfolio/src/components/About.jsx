@@ -4,7 +4,7 @@ function About() {
   };
 
   return (
-    <section id="about" className="section about-section">
+    <div className="about-inner">
       {/* BIG FADED WORD */}
       <div className="about-bg-word">about</div>
 
@@ -41,7 +41,7 @@ function About() {
           </button>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

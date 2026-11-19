@@ -1,91 +1,41 @@
 function Skills() {
-  const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
-
   const skills = [
-    {
-      area: "Brand & visual design",
-      tools: "CorelDRAW · Canva",
-      proof: "Created Perficient One’s logo and visual identity, then carried the system into its website and brand materials.",
-      standout: "I connect visual choices to how a brand works in the real world, beyond a moodboard.",
-    },
-    {
-      area: "Front-end development",
-      tools: "HTML · CSS · React",
-      proof: "Built responsive experiences for the Perficient One website and Nosta’s public landing page and waitlist.",
-      standout: "I pay attention to how content, navigation, and layout hold together on both desktop and mobile.",
-    },
-    {
-      area: "Data analysis & visualisation",
-      tools: "Power BI · reporting",
-      proof: "At CNET Technologies, analysed leads across features and prepared reports; Finshyt applies that lens to spending data.",
-      standout: "I look for the useful pattern in a dataset, then make it easier for someone else to understand.",
-    },
-    {
-      area: "Python & prototyping",
-      tools: "Python · FastAPI",
-      proof: "Finshyt uses a Python API to explore annual ledgers, monthly and category trends, and answers grounded in transactions.",
-      standout: "I can take an idea from raw records toward a working product flow, while being clear about what is still a prototype.",
-    },
-    {
-      area: "Media & communication",
-      tools: "Video editing · writing",
-      proof: "At AIBF 2024, wrote event notes, press notes, and articles during the 10-day festival; I also work with video editing.",
-      standout: "I enjoy making information clear and engaging, whether it is a project story, a report, or a visual edit.",
-    },
+    ["canva", "i make niche designs that fit the idea, instead of looking like another template."],
+    ["coreldraw", "i care about the little details in a logo; perficient one gave me plenty to get right."],
+    ["power bi", "i turn a messy sheet into a report someone can actually use, like i did with leads at cnet."],
+    ["html & css", "i like making a layout feel just as considered on a phone as it does on a laptop."],
+    ["react", "i use components to make interactive ideas easier to build and keep improving."],
+    ["python", "i use it to make data ideas work, including the ledger analysis behind finshyt."],
+    ["video editing", "i know when to cut: the best part of a story deserves the screen time."],
+    ["acting", "it has taught me that how you say something matters as much as what you say."],
+    ["travelling", "new places make me notice details i would have missed at home."],
+    ["minecraft", "it taught me lava can be behind any block. look before you dig."],
+    ["poker", "it taught me to make decisions with incomplete information and keep a straight face."],
+    ["coffee", "it prepares me for the fact that life can be bitter too."],
   ];
 
   return (
-    <section id="skills" className="section skills">
+    <div className="skills-inner">
       <div className="about-bg-word" aria-hidden="true">skills</div>
       <div className="skills-wrapper">
-        <div className="skills-heading">
-          <p className="skills-eyebrow">A mix of design, data, and making</p>
-          <h2 className="skills-title">Skills, shown through my work</h2>
-          <p className="skills-intro">
-            I like moving between the idea, the details, and the finished experience.
-            Here’s what that looks like in practice.
-          </p>
-        </div>
-
-        <div className="skills-table-wrap">
-          <table className="skills-table">
-            <thead>
-              <tr>
-                <th scope="col">Skill</th>
-                <th scope="col">Project proof</th>
-                <th scope="col">My approach</th>
-              </tr>
-            </thead>
-            <tbody>
-              {skills.map((skill) => (
-                <tr key={skill.area}>
-                  <th scope="row">
-                    <span className="skill-area">{skill.area}</span>
-                    <span className="skill-tools">{skill.tools}</span>
-                  </th>
-                  <td data-label="Project proof">{skill.proof}</td>
-                  <td data-label="My approach">{skill.standout}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <p className="skills-interests">
-          <span>Outside work</span> Acting, travel, Minecraft, and poker keep me curious about people, places, and how things fit together.
-        </p>
-
+        <h2 className="skills-title">skills & interests</h2>
+        <ul className="skills-grid">
+          {skills.map(([name, description]) => (
+            <li className="skill-note" key={name}>
+              <h3>{name}</h3>
+              <p>{description}</p>
+            </li>
+          ))}
+        </ul>
         <button
           className="scroll-down"
-          onClick={() => scrollTo("contact")}
+          onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
           aria-label="Scroll to contact"
         >
           ↓
         </button>
       </div>
-    </section>
+    </div>
   );
 }
 

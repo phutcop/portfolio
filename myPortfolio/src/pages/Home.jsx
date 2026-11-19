@@ -27,7 +27,7 @@ function Home() {
   };
 
   return (
-    <section id="home" className="section home">
+    <div className="home-inner">
       <div className="home-content">
         <h1 className="home-title">
           hi, <br />
@@ -52,7 +52,7 @@ function Home() {
       >
         ↓
       </button>
-    </section>
+    </div>
   );
 }
 
