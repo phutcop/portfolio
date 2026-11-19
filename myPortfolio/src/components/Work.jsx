@@ -28,6 +28,30 @@ function Work() {
       ),
     },
     {
+      title: "building nosta — a social time capsule",
+      description: (
+        <>
+          i’m building nosta, a social time capsule for sharing a memory now and
+          choosing when it returns. the public landing page and waitlist are
+          live; the social platform is still in prototype.
+          <br /><br />
+          <a
+            href="https://adminsnosta.github.io/waitlist/"
+            target="_blank"
+            rel="noreferrer"
+            className="project-link"
+          >
+            visit nosta ↗
+          </a>
+        </>
+      ),
+    },
+    {
+      title: "finshyt — expense analysis prototype",
+      description:
+        "i’m prototyping an expense analysis tool that imports an annual ledger, compares monthly and category spending, and answers questions from recorded transactions. it currently runs as a local demo; sign-in and data storage are not production-ready.",
+    },
+    {
       title: "i spy — precision in the unnoticed",
       description: (
         <>
