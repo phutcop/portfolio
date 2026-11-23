@@ -1,5 +1,4 @@
 import { useState } from "react";
-import SectionArrow from "../components/SectionArrow";
 
 function Contact({ onHome }) {
   const [sent, setSent] = useState(false);
@@ -42,7 +41,7 @@ function Contact({ onHome }) {
           onClick={onHome}
           aria-label="Back to home"
         >
-          <SectionArrow direction="up" />
+          ↑
         </button>
 
         {/* FORM */}

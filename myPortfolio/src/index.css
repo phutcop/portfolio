@@ -563,11 +563,11 @@ p {
 @media (max-width: 768px) {
   .skills-bullet-list {
     grid-template-columns: 1fr;
-    row-gap: 0;
+    row-gap: 1rem;
   }
 
   .skills-bullet-list li {
-    min-height: 2.55rem;
+    min-height: 2.8rem;
   }
 
   .skill-bullet-button {

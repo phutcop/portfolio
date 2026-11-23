@@ -1354,128 +1354,6 @@ body {
   opacity: 0.6;
 }
 
-/* Navigation uses a drawn icon so it cannot turn into an emoji glyph. */
-.scroll-down {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  padding: 0;
-  color: var(--text-main);
-  opacity: 1;
-  animation: none;
-  transition: transform 180ms ease, background-color 180ms ease;
-}
-
-.scroll-down:hover {
-  transform: translateY(3px);
-}
-
-.scroll-down.up:hover {
-  transform: translateY(-3px);
-}
-
-.section-arrow-icon {
-  display: block;
-  width: 27px;
-  height: 27px;
-}
-
-@media (max-width: 768px) {
-  .app-layout {
-    --mobile-nav-height: 5rem;
-  }
-
-  .app-layout > .icon-panel {
-    height: calc(var(--mobile-nav-height) + env(safe-area-inset-bottom));
-    padding-bottom: env(safe-area-inset-bottom);
-    box-shadow: 0 -5px 22px rgba(33, 40, 66, 0.05);
-  }
-
-  .app-layout > .icon-panel > button {
-    gap: 0.1rem;
-    padding: 0.35rem 0.1rem;
-  }
-
-  .app-layout > .icon-panel > button img {
-    display: block;
-    width: 31px;
-    height: 31px;
-    object-fit: contain;
-  }
-
-  .app-layout > .icon-panel > button span {
-    font-size: 0.67rem;
-    line-height: 1.1;
-  }
-
-  .content > .section,
-  .content > #contact,
-  .content > .home {
-    padding-bottom: calc(var(--mobile-nav-height) + env(safe-area-inset-bottom) + 1.5rem) !important;
-  }
-
-  .content .scroll-down {
-    width: 48px;
-    height: 48px;
-    margin-top: 1.2rem;
-    border: 1px solid rgba(33, 40, 66, 0.35);
-    border-radius: 50%;
-    background: rgba(250, 249, 246, 0.8);
-  }
-
-  .content .scroll-down:active {
-    background: rgba(33, 40, 66, 0.1);
-  }
-
-  .content .section-arrow-icon {
-    width: 24px;
-    height: 24px;
-  }
-
-  .home-inner::before {
-    content: "";
-    display: block;
-    width: 3.5rem;
-    height: 1px;
-    margin-bottom: 1.6rem;
-    background: var(--panel-border);
-  }
-
-  .work-list {
-    gap: 0.45rem;
-  }
-
-  .work-item {
-    border: 0;
-  }
-
-  .work-header {
-    padding: 0.8rem 0;
-  }
-
-  .work-description.open {
-    max-height: 600px;
-    padding-bottom: 0.9rem;
-  }
-
-  .app-layout > .tiger {
-    display: none;
-  }
-
-  .app-layout[data-section="home"] > .tiger,
-  .app-layout[data-section="about"] > .tiger {
-    display: block;
-    position: fixed;
-    width: 78px;
-    right: 1rem;
-    bottom: calc(var(--mobile-nav-height) + env(safe-area-inset-bottom) + 0.85rem);
-    opacity: 0.38;
-    z-index: 4;
-  }
-}
-
 /* Sections are pages: scrolling stays inside the open page. */
 html,
 body,
@@ -1538,7 +1416,7 @@ body,
     position: fixed;
     inset: auto 0 0 0;
     width: 100%;
-    height: calc(var(--mobile-nav-height) + env(safe-area-inset-bottom));
+    height: 4.4rem;
     flex-direction: row;
     justify-content: space-around;
     align-items: stretch;
@@ -1584,7 +1462,7 @@ body,
   .content > .home {
     height: 100dvh;
     min-height: 100dvh !important;
-    padding: 2rem 1.35rem calc(var(--mobile-nav-height) + env(safe-area-inset-bottom) + 1.5rem) !important;
+    padding: 2rem 1.35rem 6.5rem !important;
     overflow-y: auto;
     opacity: 1;
     transform: none;
