@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SectionArrow from "./SectionArrow";
 
 const skills = [
   ["canva", "i make niche designs that fit the idea, instead of looking like another template."],
@@ -25,7 +26,7 @@ function Skills({ onNext }) {
         <h2 className="skills-title">skills & interests</h2>
         <ul className="skills-bullet-list" aria-label="Skills and interests">
           {skills.map(([name, description], index) => (
-            <li key={name}>
+            <li key={name} className={activeSkill === index ? "active" : ""}>
               <button
                 type="button"
                 className={`skill-bullet-button ${activeSkill === index ? "active" : ""}`}
@@ -41,7 +42,7 @@ function Skills({ onNext }) {
             </li>
           ))}
         </ul>
-        <button className="scroll-down" onClick={onNext} aria-label="Go to contact">↓</button>
+        <button className="scroll-down" onClick={onNext} aria-label="Go to contact"><SectionArrow /></button>
       </div>
     </div>
   );

@@ -1,3 +1,5 @@
+import SectionArrow from "./SectionArrow";
+
 function About({ onNext }) {
   return (
     <div className="about-inner">
@@ -36,7 +38,7 @@ function About({ onNext }) {
             onClick={onNext}
             aria-label="Scroll to works"
           >
-            ↓
+            <SectionArrow />
           </button>
           </div>
         </div>

@@ -24,31 +24,31 @@ function App() {
   }, [activeSection]);
 
   return (
-    <div className="app-layout">
+    <div className="app-layout" data-section={activeSection}>
       {/* LEFT ICON PANEL (DESKTOP) */}
       <aside className="icon-panel">
         <button onClick={() => setActiveSection("home")} aria-current={activeSection === "home" ? "page" : undefined}>
-          <img src={homeImg} alt="home" />
+          <img src={homeImg} alt="" />
           <span>home</span>
         </button>
 
         <button onClick={() => setActiveSection("about")} aria-current={activeSection === "about" ? "page" : undefined}>
-          <img src={sectionsImg} alt="about" />
+          <img src={sectionsImg} alt="" />
           <span>about</span>
         </button>
 
         <button onClick={() => setActiveSection("works")} aria-current={activeSection === "works" ? "page" : undefined}>
-          <img src={sectionsImg} alt="works" />
+          <img src={sectionsImg} alt="" />
           <span>works</span>
         </button>
 
         <button onClick={() => setActiveSection("skills")} aria-current={activeSection === "skills" ? "page" : undefined}>
-          <img src={sectionsImg} alt="skills" />
+          <img src={sectionsImg} alt="" />
           <span>skills</span>
         </button>
 
         <button onClick={() => setActiveSection("contact")} aria-current={activeSection === "contact" ? "page" : undefined}>
-          <img src={sectionsImg} alt="contact" />
+          <img src={sectionsImg} alt="" />
           <span>contact</span>
         </button>
 
@@ -57,7 +57,7 @@ function App() {
           target="_blank"
           rel="noreferrer"
         >
-          <img src={resumeImg} alt="resume" />
+          <img src={resumeImg} alt="" />
           <span>resume</span>
         </a>
       </aside>

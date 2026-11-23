@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SectionArrow from "./SectionArrow";
 
 function Work({ onNext }) {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -133,7 +134,7 @@ function Work({ onNext }) {
           onClick={onNext}
           aria-label="Scroll to skills"
         >
-          ↓
+          <SectionArrow />
         </button>
       </div>
     </div>

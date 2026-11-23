@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import SectionArrow from "../components/SectionArrow";
 
 function Home({ onNext }) {
   const fullText = "yashraj dave!";
@@ -40,7 +41,7 @@ function Home({ onNext }) {
         aria-label="Scroll to about"
         onClick={onNext}
       >
-        ↓
+        <SectionArrow />
       </button>
     </div>
   );
