@@ -1497,3 +1497,17 @@ body,
 .project-link:hover {
   opacity: 0.6;
 }
+
+/* Compact mobile navigation uses the same illustrations as the desktop sidebar. */
+@media (max-width: 768px) {
+  .app-layout > .icon-panel > button img {
+    display: block;
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+  }
+
+  .content .scroll-down {
+    display: none !important;
+  }
+}
