@@ -3,8 +3,11 @@ import "./styles/global.css";
 
 /* PANEL ICONS */
 import homeImg from "./assets/panel/home.png";
-import sectionsImg from "./assets/panel/sections.png";
 import resumeImg from "./assets/panel/resume.png";
+import jokerImg from "./assets/retro/joker.png";
+import workerImg from "./assets/retro/worker.png";
+import monopolyImg from "./assets/retro/monopoly.png";
+import contactImg from "./assets/retro/contact.png";
 
 /* TIGER */
 import Shera from "./components/Shera";
@@ -15,6 +18,23 @@ import About from "./components/About";
 import Work from "./components/Work";
 import Skills from "./components/Skills";
 import ContactPage from "./pages/ContactPage";
+
+const navIllustrations = {
+  about: { src: jokerImg, width: 472, height: 713, x: 36, top: 100, cropWidth: 400, crop: 330 },
+  works: { src: workerImg, width: 600, height: 600, crop: 600 },
+  skills: { src: monopolyImg, width: 236, height: 268, x: 18, top: 0, cropWidth: 200, crop: 268 },
+  contact: { src: contactImg, width: 680, height: 567, crop: 567, darkBackground: true },
+};
+
+function NavArt({ type }) {
+  const art = navIllustrations[type];
+  const filterId = `nav-cutout-${type}`;
+  const alpha = art.darkBackground ? "0.333 0.333 0.333 0 0" : "-0.333 -0.333 -0.333 0 1";
+  return <span className={`nav-art nav-art-${type}`} aria-hidden="true"><svg viewBox={`${art.x || 0} ${art.top || 0} ${art.cropWidth || art.width} ${art.crop}`} preserveAspectRatio="xMidYMid meet">
+    <defs><filter id={filterId} colorInterpolationFilters="sRGB"><feColorMatrix type="matrix" values={`0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  ${alpha}`} /></filter></defs>
+    <image href={art.src} width={art.width} height={art.height} filter={`url(#${filterId})`} />
+  </svg></span>;
+}
 
 function App() {
   const [activeSection, setActiveSection] = useState("home");
@@ -33,22 +53,22 @@ function App() {
         </button>
 
         <button onClick={() => setActiveSection("about")} aria-current={activeSection === "about" ? "page" : undefined}>
-          <img src={sectionsImg} alt="" />
+          <NavArt type="about" />
           <span>about</span>
         </button>
 
         <button onClick={() => setActiveSection("works")} aria-current={activeSection === "works" ? "page" : undefined}>
-          <img src={sectionsImg} alt="" />
+          <NavArt type="works" />
           <span>works</span>
         </button>
 
         <button onClick={() => setActiveSection("skills")} aria-current={activeSection === "skills" ? "page" : undefined}>
-          <img src={sectionsImg} alt="" />
+          <NavArt type="skills" />
           <span>skills</span>
         </button>
 
         <button onClick={() => setActiveSection("contact")} aria-current={activeSection === "contact" ? "page" : undefined}>
-          <img src={sectionsImg} alt="" />
+          <NavArt type="contact" />
           <span>contact</span>
         </button>
 

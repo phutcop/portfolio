@@ -1,6 +1,8 @@
 import { useState } from "react";
 import SectionArrow from "./SectionArrow";
-import SkillArt from "./SkillArt";
+import tigerPortrait from "../assets/retro/tiger-portrait.png";
+import tigerLandscape from "../assets/retro/tiger-landscape.png";
+import jackArt from "../assets/retro/jack.png";
 
 const skills = [
   ["canva", "i make niche designs that fit the idea, instead of looking like another template."],
@@ -30,12 +32,12 @@ function Skills({ onNext }) {
         <div className="deck-wrap">
           <div className="deck-card deck-card-back deck-card-back-two" aria-hidden="true" />
           <div className="deck-card deck-card-back deck-card-back-one" aria-hidden="true" />
-          <button key={activeSkill} type="button" data-skill={name} className="deck-card deck-card-front" onClick={() => setActiveSkill((activeSkill + 1) % skills.length)} aria-label={`${name}: ${description}. Draw next card`}>
-            <span className="deck-corner deck-corner-top">{ranks[activeSkill]} <span aria-hidden="true">◆</span></span>
-            <SkillArt name={name} />
-            <span className="deck-card-copy"><strong>{name}</strong><span>{description}</span></span>
-            <span className="deck-corner deck-corner-bottom" aria-hidden="true">{ranks[activeSkill]} <span>◆</span></span>
-            <span className="deck-prompt">tap to draw another <span aria-hidden="true">↗</span></span>
+          <button key={activeSkill} type="button" data-skill={name} className="deck-card deck-card-front retro-card" onClick={() => setActiveSkill((activeSkill + 1) % skills.length)} aria-label={`${name}: ${description}. Draw next card`}>
+            <span className="retro-card-top"><span className="retro-rank">{ranks[activeSkill]}<small>♦</small></span><strong>{name}</strong></span>
+            {activeSkill === skills.length - 1 ? <img className="retro-card-art jack-art" src={jackArt} alt="" /> : <picture className="retro-card-picture"><source media="(max-width: 768px)" srcSet={tigerPortrait} /><img className="retro-card-art" src={tigerLandscape} alt="" /></picture>}
+            <span className="retro-card-caption">{description}</span>
+            <span className="retro-card-bottom" aria-hidden="true">{ranks[activeSkill]} ♦</span>
+            <span className="retro-card-prompt">tap to draw the next card</span>
           </button>
         </div>
       </div>

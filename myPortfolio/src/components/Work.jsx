@@ -13,16 +13,16 @@ const projects = [
 ];
 
 function Work({ onNext }) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const selected = projects[activeIndex];
+  const [activeIndex, setActiveIndex] = useState(null);
+  const selected = activeIndex === null ? null : projects[activeIndex];
 
   return (
     <div className="work-inner bowl-work">
       <div className="bowl-heading">
-        <span className="desk-eyebrow">the work / pick a slip</span>
-        <h2 className="work-title">some things i’ve <em>put out there.</em></h2>
+        <span className="desk-eyebrow">the work / housie edition</span>
+        <h2 className="work-title">pick a number. <em>unfold a story.</em></h2>
       </div>
-      <div className="bowl-layout">
+      <div className={`bowl-layout ${selected ? "has-note" : ""}`}>
         <div className="bowl-stage" role="group" aria-label="Pick a project slip from the bowl">
           <div className="bowl-shadow" aria-hidden="true" />
           <div className="bowl-back" aria-hidden="true" />
@@ -37,26 +37,18 @@ function Work({ onNext }) {
                 onClick={() => setActiveIndex(index)}
               >
                 <span>{String(index + 1).padStart(2, "0")}</span>
-                <strong>{project.name}</strong>
               </button>
             ))}
           </div>
           <div className="bowl-front" aria-hidden="true" />
           <div className="bowl-rim" aria-hidden="true" />
-          <span className="bowl-caption">go on, pick one ↗</span>
+          <span className="bowl-caption">choose a chit to open</span>
         </div>
-
-        <article key={activeIndex} className="bowl-note" aria-live="polite">
-          <div className="bowl-note-head"><span>from the bowl</span><span>{String(activeIndex + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}</span></div>
-          <div className="bowl-note-main">
-            <span className="bowl-note-kind">{selected.kind}</span>
-            <h3>{selected.name}</h3>
-            <p className="bowl-note-line">{selected.line}</p>
-            <p className="bowl-note-description">{selected.description}</p>
-            {selected.href && <a className="bowl-note-link" href={selected.href} target="_blank" rel="noreferrer">{selected.link} <span aria-hidden="true">↗</span></a>}
-          </div>
-          <span className="bowl-note-sign" aria-hidden="true">yd.</span>
-        </article>
+        {selected && <article key={activeIndex} className="unfold-note" aria-live="polite">
+          <div className="unfold-panel unfold-one"><span>from the bowl</span><span>{String(activeIndex + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}</span></div>
+          <div className="unfold-panel unfold-two"><span className="bowl-note-kind">{selected.kind}</span><h3>{selected.name}</h3><p className="bowl-note-line">{selected.line}</p></div>
+          <div className="unfold-panel unfold-three"><p>{selected.description}</p><div className="unfold-actions">{selected.href && <a href={selected.href} target="_blank" rel="noreferrer">{selected.link} ↗</a>}<button type="button" onClick={() => setActiveIndex(null)}>fold away ×</button></div></div>
+        </article>}
       </div>
       <button className="scroll-down bowl-next" onClick={onNext} aria-label="Go to skills"><SectionArrow /></button>
     </div>
