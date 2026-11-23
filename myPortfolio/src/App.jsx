@@ -7,7 +7,7 @@ import sectionsImg from "./assets/panel/sections.png";
 import resumeImg from "./assets/panel/resume.png";
 
 /* TIGER */
-import tigerImg from "./assets/tiger.png";
+import Shera from "./components/Shera";
 
 /* SECTIONS */
 import Home from "./pages/Home";
@@ -64,15 +64,15 @@ function App() {
 
       {/* MAIN CONTENT */}
       <main className="content">
-        <section id="home" className="section home" hidden={activeSection !== "home"}><Home onNext={() => setActiveSection("about")} /></section>
-        <section id="about" className="section about-section" hidden={activeSection !== "about"}><About onNext={() => setActiveSection("works")} /></section>
+        <section id="home" className="section home" hidden={activeSection !== "home"}><Home onNext={() => setActiveSection("about")} /><Shera mobile /></section>
+        <section id="about" className="section about-section" hidden={activeSection !== "about"}><About onNext={() => setActiveSection("works")} /><Shera mobile /></section>
         <section id="works" className="section work" hidden={activeSection !== "works"}><Work onNext={() => setActiveSection("skills")} /></section>
         <section id="skills" className="section skills" hidden={activeSection !== "skills"}><Skills onNext={() => setActiveSection("contact")} /></section>
         <section id="contact" className="section contact" hidden={activeSection !== "contact"}><ContactPage onHome={() => setActiveSection("home")} /></section>
       </main>
 
-      {/* 🐯 TIGER */}
-      <img src={tigerImg} alt="tiger" className="tiger" />
+      <Shera />
+
     </div>
   );
 }
