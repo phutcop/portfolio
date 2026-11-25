@@ -47,7 +47,7 @@ function App() {
         </button>
 
         <a
-          href="https://drive.google.com/file/d/1wks35N4mGvlYNQwVWIavtJbyZH9aYruW/view?usp=sharing"
+          href="https://drive.google.com/file/d/1gRLPKQPx4x3yNLCU3HcbIMQC1Z1ROXcA/view?usp=drive_link"
           target="_blank"
           rel="noreferrer"
         >

@@ -90,7 +90,7 @@ function Contact() {
         <span>elsewhere</span>
         <nav aria-label="Social links">
           {socials.map(([name, href]) => <a key={name} className={`social ${name}`} href={href} target="_blank" rel="noreferrer">{name}</a>)}
-          <a className="mobile-resume-link" href="https://drive.google.com/file/d/1wks35N4mGvlYNQwVWIavtJbyZH9aYruW/view?usp=sharing" target="_blank" rel="noreferrer">resume</a>
+          <a className="mobile-resume-link" href="https://drive.google.com/file/d/1gRLPKQPx4x3yNLCU3HcbIMQC1Z1ROXcA/view?usp=drive_link" target="_blank" rel="noreferrer">resume</a>
         </nav>
         </div>
       </div>
