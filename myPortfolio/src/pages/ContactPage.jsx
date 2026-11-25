@@ -69,7 +69,15 @@ function Contact() {
               <label>your name<input type="text" name="name" autoComplete="name" required /></label>
               <label>your email<input type="email" name="email" autoComplete="email" required /></label>
               <label>your message<textarea name="message" rows="3" required /></label>
-              <button type="submit" disabled={status === "sending"}>{status === "sending" ? "sending…" : "send message"}</button>
+              <div className="postcard-actions">
+                <button type="submit" disabled={status === "sending"}>{status === "sending" ? "sending…" : "send message"}</button>
+                {(status === "sent" || status === "error" || status === "timeout") && (
+                  <span className={`contact-feedback contact-feedback-${status}`} role={status === "sent" ? "status" : "alert"}>
+                    <span aria-hidden="true">{status === "sent" ? "✓" : "!"}</span>
+                    {status === "sent" ? "sent — thank you!" : "couldn’t confirm — check before resending."}
+                  </span>
+                )}
+              </div>
             </form>
           </div>
         </div>
@@ -86,16 +94,6 @@ function Contact() {
         </nav>
         </div>
       </div>
-      {(status === "sent" || status === "error" || status === "timeout") && (
-        <div className={`contact-feedback contact-feedback-${status}`} role={status === "sent" ? "status" : "alert"}>
-          <span className="contact-feedback-mark" aria-hidden="true">{status === "sent" ? "✓" : "!"}</span>
-          <div>
-            <strong>{status === "sent" ? "message sent!" : "couldn’t confirm the send."}</strong>
-            <p>{status === "sent" ? "thank you for writing. i’ll get back to you soon." : "your message may have arrived. please check before sending it again."}</p>
-          </div>
-          <button type="button" onClick={() => setStatus("idle")} aria-label="close message">×</button>
-        </div>
-      )}
     </>
   );
 }
