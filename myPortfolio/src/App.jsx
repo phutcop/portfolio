@@ -59,9 +59,9 @@ function App() {
 
       <main className="content">
         <section id="home" className="section home" hidden={activeSection !== "home"}><Home onNext={() => setActiveSection("about")} /></section>
-        <section id="about" className="section about-section" hidden={activeSection !== "about"}><About /></section>
+        <section id="about" className="section about-section" hidden={activeSection !== "about"}><About key={activeSection === "about" ? "active" : "inactive"} /></section>
         <section id="works" className="section work" hidden={activeSection !== "works"}><Work key={activeSection === "works" ? "active" : "inactive"} /></section>
-        <section id="skills" className="section skills" hidden={activeSection !== "skills"}><Skills /></section>
+        <section id="skills" className="section skills" hidden={activeSection !== "skills"}><Skills key={activeSection === "skills" ? "active" : "inactive"} /></section>
         <section id="contact" className="section contact" hidden={activeSection !== "contact"}><ContactPage onHome={() => setActiveSection("home")} /></section>
       </main>
     </div>

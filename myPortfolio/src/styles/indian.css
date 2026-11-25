@@ -213,7 +213,7 @@ h3,
 .in-about {
   position: relative;
   z-index: 1;
-  width: min(100%, 680px);
+  width: min(100%, 820px);
   margin: auto;
   padding-block: 1rem;
   display: flex;
@@ -225,6 +225,73 @@ h3,
 
 .in-about-heading {
   margin-bottom: 1.4rem;
+}
+
+.in-about-stage {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 56ch);
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+  transform: translateX(-56px);
+}
+
+.in-about-pinch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .35rem;
+  opacity: .96;
+}
+
+.pinch-hand {
+  width: 124px;
+  height: 124px;
+  overflow: visible;
+  filter: drop-shadow(0 10px 18px rgba(24, 6, 3, .28));
+}
+
+.pinch-finger-top {
+  transform-origin: 70px 89px;
+  transition: transform .72s cubic-bezier(.34, 1.56, .64, 1);
+}
+
+.pinch-finger-bottom {
+  transform-origin: 52px 148px;
+  transition: transform .72s cubic-bezier(.34, 1.56, .64, 1);
+}
+
+.in-about-pinch.is-open .pinch-finger-top {
+  transform: translateY(-6px) rotate(-24deg);
+}
+
+.in-about-pinch.is-open .pinch-finger-bottom {
+  transform: translateY(6px) rotate(22deg);
+}
+
+.in-about-pinch-label {
+  font: italic 400 .88rem/1 var(--f-serif);
+  color: rgba(243, 196, 93, .82);
+  letter-spacing: .02em;
+}
+
+.in-about-panel-wrap {
+  transform-origin: left center;
+  transform: scaleY(.18) scaleX(.92);
+  opacity: 0;
+  transition: transform .68s cubic-bezier(.22, 1, .36, 1) .05s, opacity .42s ease .05s;
+}
+
+.in-about-panel-wrap.is-open {
+  transform: scaleY(1) scaleX(1);
+  opacity: 1;
+}
+
+.in-about-heading .desk-eyebrow {
+  display: block;
+  margin-bottom: .35rem;
+  color: #f3c45d;
 }
 
 .in-about-title {
@@ -301,6 +368,23 @@ h3,
   .in-about-panel {
     width: 100%;
     padding: .1rem 0 .1rem .95rem;
+  }
+
+  .in-about-stage {
+    grid-template-columns: 1fr;
+    gap: .85rem;
+    transform: none;
+  }
+
+  .in-about-pinch {
+    flex-direction: row;
+    justify-content: center;
+    gap: .5rem;
+  }
+
+  .pinch-hand {
+    width: 54px;
+    height: 54px;
   }
 
   .in-about-panel p {
@@ -2783,8 +2867,89 @@ h3,
     transform: translateY(-1px);
   }
 
+  .deck-wrap.is-shuffling .deck-card-back-top {
+    z-index: 3;
+    animation: deck-shuffle-front .72s cubic-bezier(.22, 1, .36, 1) both;
+  }
+
+  .deck-card-front.is-initial-draw {
+    animation: card-draw-reveal .48s cubic-bezier(.22, 1, .36, 1) both;
+  }
+
+  @keyframes card-draw-reveal {
+    0% {
+      opacity: 0;
+      transform: translateY(-22px) rotate(-4deg) scale(.94);
+    }
+    60% {
+      opacity: 1;
+      transform: translateY(3px) rotate(1deg) scale(1.015);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) rotate(0deg) scale(1);
+    }
+  }
+
+  .deck-wrap.is-shuffling .deck-card-back-one {
+    animation: deck-shuffle-left .72s cubic-bezier(.22, 1, .36, 1) both;
+  }
+
+  .deck-wrap.is-shuffling .deck-card-back-two {
+    animation: deck-shuffle-right .72s cubic-bezier(.22, 1, .36, 1) both;
+  }
+
+  @keyframes deck-shuffle-front {
+    0% {
+      transform: translateX(0) rotate(0deg) scale(.98);
+    }
+    28% {
+      transform: translateX(34px) translateY(-8px) rotate(6deg);
+    }
+    58% {
+      transform: translateX(-26px) translateY(4px) rotate(-5deg);
+    }
+    100% {
+      transform: translateX(0) rotate(0deg) scale(1);
+    }
+  }
+
+  @keyframes deck-shuffle-left {
+    0% {
+      transform: translate(0, 0) rotate(-3deg);
+    }
+    30% {
+      transform: translate(-44px, -6px) rotate(-10deg);
+    }
+    64% {
+      transform: translate(18px, 4px) rotate(2deg);
+    }
+    100% {
+      transform: translate(0, 0) rotate(-3deg);
+    }
+  }
+
+  @keyframes deck-shuffle-right {
+    0% {
+      transform: translate(0, 0) rotate(4deg);
+    }
+    34% {
+      transform: translate(42px, 6px) rotate(11deg);
+    }
+    68% {
+      transform: translate(-14px, -4px) rotate(-2deg);
+    }
+    100% {
+      transform: translate(0, 0) rotate(4deg);
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .studio-home-art::before {
+    .studio-home-art::before,
+    .deck-wrap.is-shuffling .deck-card-back-top,
+    .deck-wrap.is-shuffling .deck-card-back-one,
+    .deck-wrap.is-shuffling .deck-card-back-two,
+    .deck-card-front.is-initial-draw {
       animation: none;
     }
   }

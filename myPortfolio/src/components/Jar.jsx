@@ -63,12 +63,6 @@ export function JarBack() {
       <g strokeLinecap="round">
         <path d="M93 69 Q160 77 227 69" fill="none" stroke="#f3c45d" strokeWidth="2.4" opacity=".88" />
         <path d="M95 72 Q160 80 225 72" fill="none" stroke="#6d3a12" strokeWidth="1.1" opacity=".55" />
-        <path d="M214 72 Q226 84 232 100" fill="none" stroke="#f3c45d" strokeWidth="1.8" opacity=".85" />
-        <g transform="translate(234, 107) rotate(-14)">
-          <rect x="-11" y="-14" width="22" height="28" rx="4" fill="#f8f4ec" stroke="#8b3524" strokeWidth="1.5" />
-          <circle cx="0" cy="-9" r="1.8" fill="#8b3524" />
-          <text x="0" y="6" textAnchor="middle" fill="#8b3524" fontSize="10" fontWeight="700" fontFamily="serif">08</text>
-        </g>
       </g>
     </svg>
   );
