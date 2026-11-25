@@ -6,7 +6,6 @@ function About() {
       <WarliWall variant="about" />
       <div className="about-inner in-about">
         <div className="in-about-heading">
-          <span className="desk-eyebrow">about me · gandhinagar</span>
           <h2 className="in-about-title">a little <em>about me.</em></h2>
         </div>
         <div className="in-about-panel">
