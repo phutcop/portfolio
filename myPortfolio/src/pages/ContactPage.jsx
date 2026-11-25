@@ -19,20 +19,25 @@ function Contact() {
   async function handleSubmit(event) {
     event.preventDefault();
     const form = event.currentTarget;
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 15000);
     setStatus("sending");
     try {
       const response = await fetch(form.action, {
         method: "POST",
-        headers: { Accept: "application/json" },
-        body: new FormData(form),
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+        signal: controller.signal,
       });
       if (!response.ok) throw new Error("Message failed");
       const result = await response.json();
       if (result.success === false || result.success === "false") throw new Error("Message failed");
       form.reset();
       setStatus("sent");
-    } catch {
-      setStatus("error");
+    } catch (error) {
+      setStatus(error.name === "AbortError" ? "timeout" : "error");
+    } finally {
+      window.clearTimeout(timeout);
     }
   }
 
@@ -65,7 +70,6 @@ function Contact() {
               <label>your email<input type="email" name="email" autoComplete="email" required /></label>
               <label>your message<textarea name="message" rows="3" required /></label>
               <button type="submit" disabled={status === "sending"}>{status === "sending" ? "sending…" : "send message"}</button>
-              <p className="postcard-status" role="status">{status === "sent" ? "message sent. thank you!" : status === "error" ? "the message didn’t send. please try again." : ""}</p>
             </form>
           </div>
         </div>
@@ -82,6 +86,16 @@ function Contact() {
         </nav>
         </div>
       </div>
+      {(status === "sent" || status === "error" || status === "timeout") && (
+        <div className={`contact-feedback contact-feedback-${status}`} role={status === "sent" ? "status" : "alert"}>
+          <span className="contact-feedback-mark" aria-hidden="true">{status === "sent" ? "✓" : "!"}</span>
+          <div>
+            <strong>{status === "sent" ? "message sent!" : "couldn’t confirm the send."}</strong>
+            <p>{status === "sent" ? "thank you for writing. i’ll get back to you soon." : "your message may have arrived. please check before sending it again."}</p>
+          </div>
+          <button type="button" onClick={() => setStatus("idle")} aria-label="close message">×</button>
+        </div>
+      )}
     </>
   );
 }
