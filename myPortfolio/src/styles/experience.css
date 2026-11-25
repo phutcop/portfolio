@@ -1,0 +1,174 @@
+/* A small desk of interactive work, beside the original navigation panel. */
+.content > .work,
+.content > .skills {
+  background: radial-gradient(circle at 48% 20%, #faf8f1 0, #f1ede3 75%);
+}
+
+.playing-skills {
+  width: min(100%, 1130px);
+  margin-inline: auto;
+  color: #212842;
+}
+
+.desk-eyebrow,
+.deck-index-heading,
+.deck-corner,
+.deck-prompt {
+  font: 650 0.7rem/1.2 "Inter", system-ui, sans-serif;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.playing-heading { margin-bottom: clamp(1.2rem, 3vh, 2.1rem); }
+.playing-heading .skills-title {
+  max-width: 19ch;
+  margin: 0.5rem 0 0;
+  font: 500 clamp(2.6rem, 4.5vw, 4.8rem)/1.05 "Playfair Display", Georgia, serif;
+  letter-spacing: -0.055em;
+  text-transform: none;
+  text-align: left;
+}
+
+.playing-heading em { color: #9d4d38; font-weight: 400; }
+
+/* Skills: one playing card in front, two visibly stacked behind. */
+.playing-layout { display: grid; grid-template-columns: minmax(260px, 0.88fr) minmax(0, 1.12fr); gap: clamp(2rem, 6vw, 6rem); align-items: center; }
+.deck-wrap { position: relative; width: min(100% - 25px, 340px); height: min(55vh, 430px); min-height: 330px; margin-inline: auto; }
+.deck-card { position: absolute; inset: 0; border-radius: 14px; }
+.deck-card-back { border: 2px solid #a55440; background: repeating-linear-gradient(45deg, #9d4d38 0 8px, #f2dfc4 8px 10px, #9d4d38 10px 18px); box-shadow: inset 0 0 0 9px #fffaf0, inset 0 0 0 11px #9d4d38, 6px 10px 17px rgba(72,53,41,.16); }
+.deck-card-back-one { transform: translate(12px, 8px) rotate(5deg); }
+.deck-card-back-two { transform: translate(22px, 16px) rotate(9deg); }
+.deck-card-front { z-index: 3; display: flex; flex-direction: column; width: 100%; padding: 1.2rem; border: 2px solid #a55440; background: #fffdf6; color: #212842; text-align: left; cursor: pointer; box-shadow: 5px 7px 20px rgba(72,53,41,.16); animation: card-draw 380ms cubic-bezier(.22,1,.36,1) both; }
+@keyframes card-draw { from { opacity: .4; transform: translate(24px,14px) rotate(9deg); } to { opacity: 1; transform: translate(0,0) rotate(-2deg); } }
+.deck-card-front::before { content: ""; position: absolute; inset: 0.65rem; border: 1px solid #cda58c; border-radius: 9px; pointer-events: none; }
+.deck-card-front:hover { transform: translateY(-5px) rotate(-3deg); }
+.deck-card-front:focus-visible { outline: 3px solid #212842; outline-offset: 4px; }
+.deck-corner { display: flex; flex-direction: column; align-items: flex-start; gap: 0.1rem; color: #9d4d38; font-size: 0.95rem; }
+.deck-corner span { font-size: 1.3rem; line-height: 1; }
+.deck-center-mark { position: absolute; top: 22%; left: 50%; color: #ead8c8; font: 6rem/1 Georgia, serif; transform: translateX(-50%); }
+.deck-card-copy { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 1rem; margin: auto 1rem; }
+.deck-card-copy strong { max-width: 9ch; font: 500 clamp(2.3rem, 3vw, 3.6rem)/1.04 "Playfair Display", Georgia, serif; letter-spacing: -0.06em; }
+.deck-card-copy > span { max-width: 25ch; font-size: clamp(0.87rem, 1vw, 1rem); line-height: 1.5; }
+.deck-prompt { display: flex; justify-content: space-between; margin: 0 0.15rem; color: #9d4d38; font-size: 0.59rem; }
+.deck-index { min-width: 0; }
+.deck-index-heading { display: flex; justify-content: space-between; padding-bottom: 1rem; border-bottom: 1px solid #cbbdaa; }
+.deck-index-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0.3rem 1.2rem; margin-top: 0.9rem; }
+.deck-index-grid button { display: flex; gap: 0.6rem; align-items: baseline; min-height: 2.5rem; padding: 0.35rem 0.25rem; border: 0; background: transparent; color: #212842; font-size: 0.97rem; text-align: left; cursor: pointer; transition: color 180ms ease, transform 180ms ease; }
+.deck-index-grid button span { color: #a55440; font-size: 0.62rem; font-weight: 700; }
+.deck-index-grid button:hover,
+.deck-index-grid button:focus-visible,
+.deck-index-grid button.active { color: #a55440; transform: translateX(4px); outline: none; }
+.deck-index-grid button.active { font-weight: 750; }
+.deck-index-note { margin-top: 1rem; max-width: 32ch; color: #81776d; font: italic 1.05rem/1.4 "Playfair Display", Georgia, serif; }
+
+/* Shera keeps his original colour and corner placement. Mobile uses page flow. */
+.shera { padding: 0; border: 0; background: transparent; cursor: pointer; color: #212842; }
+.shera img { display: block; width: 100%; height: auto; opacity: 0.58; filter: grayscale(100%) sepia(100%) hue-rotate(190deg) saturate(200%) brightness(0.9); }
+.shera-desktop { position: fixed; right: 1.3rem; bottom: 1rem; z-index: 7; width: 125px; }
+.shera-mobile { display: none; }
+.shera:hover img,
+.shera:focus-visible img { opacity: 0.84; }
+.shera:focus-visible { outline: 2px solid #212842; outline-offset: 4px; }
+.shera.is-roaring img { animation: shera-roar .55s ease both; }
+@keyframes shera-roar { 0%,100% { transform: rotate(0); } 25% { transform: rotate(-7deg) scale(1.08); } 55% { transform: rotate(6deg) scale(1.08); } 75% { transform: rotate(-3deg); } }
+.shera-sound { position: absolute; top: -1rem; left: -1rem; z-index: 2; padding: 0.28rem 0.5rem; border: 1px solid #212842; border-radius: 50%; background: #fffdf6; font: italic 0.8rem "Playfair Display", Georgia, serif; opacity: 0; transform: scale(.5); pointer-events: none; }
+.shera.is-roaring .shera-sound { animation: sound-pop .8s ease both; }
+@keyframes sound-pop { 0% { opacity: 0; transform: scale(.5) translateY(5px); } 25%,65% { opacity: 1; transform: scale(1) translateY(0); } 100% { opacity: 0; transform: scale(.9) translateY(-9px); } }
+
+@media (max-width: 1100px) and (min-width: 769px) {
+  .deck-wrap { width: min(100% - 25px, 270px); min-height: 340px; }
+}
+
+@media (min-width: 769px) and (max-width: 950px) {
+  .playing-layout { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+  .deck-index { width: min(100%, 520px); }
+}
+
+@media (max-width: 768px) {
+  .content > .work,
+  .content > .skills { padding: 2.1rem 1.25rem calc(var(--mobile-nav-height) + env(safe-area-inset-bottom) + 1.5rem) !important; }
+    .playing-heading .skills-title { font-size: clamp(2.6rem, 10vw, 3.7rem); }
+  .playing-layout { display: flex; flex-direction: column; gap: 1.35rem; }
+  .deck-wrap { width: min(72vw, 285px); height: 355px; min-height: 0; margin: 0.5rem auto 1.3rem; }
+  .deck-card-copy strong { font-size: 2.7rem; }
+  .deck-index { width: 100%; }
+  .deck-index-grid { gap: 0.1rem 0.65rem; }
+  .deck-index-grid button { font-size: 0.85rem; }
+  .shera-desktop { display: none; }
+  .content > .section.home,
+  .content > .section.about-section { flex-direction: column; }
+  .content > .section.home > .home-inner,
+  .content > .section.about-section > .about-inner { flex: 0 0 auto; }
+  .content > .section.home > .shera-mobile,
+  .content > .section.about-section > .shera-mobile {
+    display: block;
+    position: relative;
+    flex: 0 0 auto;
+    align-self: flex-end;
+    width: 80px;
+    margin: auto 0 0;
+    padding-top: 1.5rem;
+    z-index: 2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deck-card-front,
+  .shera.is-roaring img,
+  .shera.is-roaring .shera-sound { animation: none; }
+  .deck-index-grid button { transition: none; }
+}
+
+/* The deck is the entire Skills interaction; no duplicate index. */
+@media (min-width: 769px) {
+  .playing-layout { display: block; }
+  .playing-skills { max-width: 1050px; }
+  .deck-wrap { width: min(calc(100% - 50px), 680px); height: min(47vh, 395px); min-height: 330px; margin: 2rem auto 0; }
+  .deck-card-back-one { transform: translate(13px, 11px) rotate(3deg); }
+  .deck-card-back-two { transform: translate(27px, 21px) rotate(6deg); }
+  .deck-card-copy { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 2rem; align-items: end; width: calc(100% - 4rem); margin: auto 2rem; }
+  .deck-card-copy strong { max-width: 11ch; font-size: clamp(2.8rem, 4vw, 4.8rem); }
+  .deck-card-copy > span { max-width: 28ch; font-size: 1rem; }
+  .deck-center-mark { top: 27%; left: 48%; font-size: 8rem; }
+}
+
+@media (max-width: 768px) {
+  .deck-wrap { margin-bottom: 1.5rem; }
+}
+
+/* Cream, red ranks, and black ink echo the user's playing card reference. */
+.content > .skills { background: #f5f1e6; }
+.playing-heading em { color: #bf2247; }
+.deck-card-back { border-color: #bd2447; background: repeating-linear-gradient(45deg, #bd2447 0 8px, #f8efe1 8px 10px, #bd2447 10px 18px); box-shadow: inset 0 0 0 9px #fffaf0, inset 0 0 0 11px #bd2447, 6px 10px 17px rgba(72,53,41,.16); }
+.deck-card-front { border: 1px solid #d9d2c5; border-radius: 22px; background: #fffcf1; color: #1e2023; }
+.deck-card-front::before { display: none; }
+.deck-corner { position: absolute; z-index: 3; display: flex; flex-direction: column; gap: 0; align-items: center; color: #c51d47; font: 750 2.4rem/.86 Georgia, serif; letter-spacing: -0.08em; }
+.deck-corner span { font-size: 1.35rem; line-height: 1.25; letter-spacing: 0; }
+.deck-corner-top { top: 1.15rem; right: 1.3rem; left: auto; }
+.deck-corner-bottom { bottom: 1.15rem; left: 1.3rem; transform: rotate(180deg); }
+.deck-art { position: absolute; top: 8%; left: 12%; width: 76%; height: 58%; color: #1e2023; stroke-width: 3.2px; filter: drop-shadow(1px 1px 0 rgba(30,32,35,.16)); }
+.deck-center-mark { display: none; }
+.deck-prompt { position: absolute; right: 1.6rem; bottom: 0.9rem; width: auto; margin: 0; color: #b92a4b; font-size: 0.56rem; }
+.deck-prompt span { margin-left: 0.55rem; }
+
+@media (min-width: 769px) {
+  .deck-card-copy { position: absolute; z-index: 2; bottom: 13%; left: 12%; right: 12%; width: auto; margin: 0; gap: 1.5rem; align-items: end; }
+  .deck-card-copy strong { max-width: 12ch; font-size: clamp(2.2rem, 3vw, 3.35rem); line-height: 1.04; }
+  .deck-card-copy > span { font-size: 0.86rem; line-height: 1.38; }
+  .deck-card-front[data-skill="jack of all, master of none"] .deck-card-copy strong { font-size: clamp(1.8rem, 2.4vw, 2.6rem); }
+}
+
+@media (max-width: 768px) {
+  .deck-card-front { border-radius: 19px; }
+  .deck-corner { font-size: 1.8rem; }
+  .deck-corner span { font-size: 1rem; }
+  .deck-corner-top { top: 0.8rem; right: 0.85rem; }
+  .deck-corner-bottom { bottom: 0.8rem; left: 0.85rem; }
+  .deck-art { top: 10%; left: 10%; width: 80%; height: 37%; }
+  .deck-card-copy { position: absolute; z-index: 2; top: 49%; bottom: 13%; left: 13%; right: 13%; display: flex; flex-direction: column; gap: 0.5rem; margin: 0; width: auto; }
+  .deck-card-copy strong { max-width: none; font-size: 2.1rem; line-height: 1.03; }
+  .deck-card-copy > span { max-width: none; font-size: 0.77rem; line-height: 1.37; }
+  .deck-card-front[data-skill="programming languages"] .deck-card-copy strong,
+  .deck-card-front[data-skill="jack of all, master of none"] .deck-card-copy strong { font-size: 1.65rem; }
+  .deck-prompt { right: 1rem; bottom: 0.75rem; font-size: 0.49rem; }
+}

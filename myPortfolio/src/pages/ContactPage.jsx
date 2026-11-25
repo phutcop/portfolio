@@ -1,102 +1,88 @@
 import { useState } from "react";
+import stampImg from "../assets/tiger.webp";
+import CatFlipbook from "../components/CatFlipbook";
+import { WarliWall } from "../components/WarliArt";
 
-function Contact({ onHome }) {
-  const [sent, setSent] = useState(false);
+const socials = [
+  ["instagram", "https://instagram.com/yashplusraj"],
+  ["snapchat", "https://www.snapchat.com/"],
+  ["spotify", "https://open.spotify.com/user/d6cswqxdbscg6zkpul2qh3d6t"],
+  ["reddit", "https://reddit.com/user/yad08102005"],
+  ["linkedin", "https://www.linkedin.com/in/yashraj-dave-97620a290/"],
+  ["x", "https://twitter.com/yad_0810"],
+  ["github", "https://github.com/phutcop"],
+];
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
+function Contact() {
+  const [status, setStatus] = useState("idle");
 
-    fetch(form.action, {
-      method: "POST",
-      body: new FormData(form),
-    })
-      .then(() => {
-        form.reset();
-        setSent(true);
-
-        // auto-hide after 3 seconds
-        setTimeout(() => setSent(false), 3000);
-      })
-      .catch(() => {
-        alert("Something went wrong. Please try again.");
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    setStatus("sending");
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(form),
       });
-  };
+      if (!response.ok) throw new Error("Message failed");
+      const result = await response.json();
+      if (result.success === false || result.success === "false") throw new Error("Message failed");
+      form.reset();
+      setStatus("sent");
+    } catch {
+      setStatus("error");
+    }
+  }
 
   return (
-    <div className="contact-inner">
-      <div className="about-bg-word" aria-hidden="true">contact</div>
-      <div className="contact-wrapper">
-
-        {/* FLOATING SUCCESS TOAST */}
-        {sent && (
-          <div className="contact-toast">
-            message sent ✓
+    <>
+      <WarliWall variant="contact" />
+      <div className="contact-inner postcard-section">
+        <div className="postcard-shell">
+          <div className="postcard-top-bar" aria-hidden="true">
+            <span>post card</span>
           </div>
-        )}
-
-        {/* HOME ARROW */}
-        <button
-          className="scroll-down up"
-          onClick={onHome}
-          aria-label="Back to home"
-        >
-          ↑
-        </button>
-
-        {/* FORM */}
-        <div className="contact-form">
-          <h2 className="contact-title">contact</h2>
-
-          <form
-            action="https://formsubmit.co/yad08102005@gmail.com"
-            method="POST"
-            className="form"
-            onSubmit={handleSubmit}
-          >
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_ajax" value="true" />
-
-            <input type="text" name="name" placeholder="your name" required />
-            <input type="email" name="email" placeholder="your email" required />
-            <textarea name="message" placeholder="your message" rows="5" required />
-
-            <button type="submit" className="submit-btn">
-              send message
-            </button>
-          </form>
+        <div className="postcard-body">
+          <div className="postcard-message">
+            <h2>let’s <br /><em>talk.</em></h2>
+            <p>have a thought, a question, or something worth making together? send it my way.</p>
+          </div>
+          <div className="postcard-write">
+            <div className="postcard-stamp-wrap" aria-hidden="true">
+              <div className="postcard-stamp-box">
+                <span className="postcard-stamp-country">india</span>
+                <img src={stampImg} alt="" className="postcard-stamp" />
+                <span className="postcard-pin">₹5</span>
+              </div>
+            </div>
+            <form action="https://formsubmit.co/ajax/yad08102005@gmail.com" method="POST" onSubmit={handleSubmit} className="postcard-form">
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_ajax" value="true" />
+              <label>your name<input type="text" name="name" autoComplete="name" required /></label>
+              <label>your email<input type="email" name="email" autoComplete="email" required /></label>
+              <label>your message<textarea name="message" rows="3" required /></label>
+              <button type="submit" disabled={status === "sending"}>{status === "sending" ? "sending…" : "send message"}</button>
+              <p className="postcard-status" role="status">{status === "sent" ? "message sent. thank you!" : status === "error" ? "the message didn’t send. please try again." : ""}</p>
+            </form>
+          </div>
         </div>
-
-        {/* SOCIALS */}
-        <div className="contact-socials">
-          <h3 className="socials-title">connect here :)</h3>
-
-          <ul className="socials-list">
-            {/* MOBILE RESUME */}
-            <li className="mobile-only">
-              <a
-                href="https://drive.google.com/file/d/1wks35N4mGvlYNQwVWIavtJbyZH9aYruW/view?usp=sharing"
-                target="_blank"
-                rel="noreferrer"
-                className="resume-mobile"
-              >
-                resume
-              </a>
-            </li>
-
-            <li><a href="https://instagram.com/yashplusraj" target="_blank" className="social instagram">instagram</a></li>
-            <li><a href="https://www.snapchat.com/" target="_blank" className="social snapchat">snapchat</a></li>
-            <li><a href="https://open.spotify.com/user/d6cswqxdbscg6zkpul2qh3d6t" target="_blank" className="social spotify">spotify</a></li>
-            <li><a href="https://reddit.com/user/yad08102005" target="_blank" className="social reddit">reddit</a></li>
-            <li><a href="https://www.linkedin.com/in/yashraj-dave-97620a290/" target="_blank" className="social linkedin">linkedin</a></li>
-            <li><a href="https://twitter.com/yad_0810" target="_blank" className="social x">x</a></li>
-            <li><a href="https://github.com/phutcop" target="_blank" className="social github">github</a></li>
-          </ul>
-        </div>
-
       </div>
-    </div>
+      <div className="contact-cat-path" aria-hidden="true">
+        <CatFlipbook />
+        <span className="contact-cat-note">let’s cross paths</span>
+      </div>
+      <div className="postcard-socials">
+        <span>elsewhere</span>
+        <nav aria-label="Social links">
+          {socials.map(([name, href]) => <a key={name} className={`social ${name}`} href={href} target="_blank" rel="noreferrer">{name}</a>)}
+          <a className="mobile-resume-link" href="https://drive.google.com/file/d/1wks35N4mGvlYNQwVWIavtJbyZH9aYruW/view?usp=sharing" target="_blank" rel="noreferrer">resume</a>
+        </nav>
+        </div>
+      </div>
+    </>
   );
 }
 

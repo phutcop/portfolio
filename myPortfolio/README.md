@@ -1,16 +1,23 @@
-# React + Vite
+# Yashraj Dave portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + Vite portfolio. This is the local Indian-theme version; it has not been published.
 
-Currently, two official plugins are available:
+## Run locally
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```sh
+npm ci
+npm run dev
+```
 
-## React Compiler
+Vite serves the site at `/portfolio/` (see `vite.config.js`). Run `npm run build` and `npm run lint` before handing off changes.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Current design
 
-## Expanding the ESLint configuration
+- Home uses an ink-writing name entrance and the clickable Shera tiger.
+- About places the original copy directly on the red-and-green rug; the supplied cat frames run across its lower red band.
+- Works has a glass jar of eight numbered chits. A selected chit opens in three folds, and Escape or “fold away” closes it.
+- Skills is an eleven-card deck with a centered title, caption, and illustrated card back.
+- Contact is a postcard with a working FormSubmit form and social links.
+- Desktop navigation is a fabric scroll; phone navigation is a fixed bottom tab bar. The top stripe and section chevrons were removed.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Styles load in this order: `index.css`, `experience.css`, `retro.css`, then `styles/indian.css`. Make new visual changes in `styles/indian.css` so the theme stays consistent. Respect `prefers-reduced-motion` for animation work.
