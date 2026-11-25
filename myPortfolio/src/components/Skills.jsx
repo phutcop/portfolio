@@ -23,6 +23,17 @@ function Skills() {
   const [name, description] = skills[activeSkill];
   const ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J"];
   const next = () => setActiveSkill((activeSkill + 1) % skills.length);
+  const prev = () => setActiveSkill((activeSkill - 1 + skills.length) % skills.length);
+
+  const handleKeyDown = (event) => {
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      next();
+    } else if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      prev();
+    }
+  };
 
   return (
     <>
@@ -36,7 +47,7 @@ function Skills() {
         <div className="deck-wrap">
           <div className="deck-card deck-card-back deck-card-back-two" aria-hidden="true" />
           <div className="deck-card deck-card-back deck-card-back-one" aria-hidden="true" />
-          <button key={activeSkill} type="button" data-skill={name} className="deck-card deck-card-front retro-card" onClick={next} aria-label={`${name}: ${description}. Draw next card`}>
+          <button key={activeSkill} type="button" data-skill={name} className="deck-card deck-card-front retro-card" onClick={next} onKeyDown={handleKeyDown} aria-label={`${name}: ${description}. Draw next card`}>
             <span className="in-index in-index-top" aria-hidden="true"><b>{ranks[activeSkill]}</b><i>♦</i></span>
             <strong className="in-card-title">{name}</strong>
             {activeSkill === skills.length - 1 ? <img className="retro-card-art jack-art" src={jackArt} alt="" /> : <picture className="retro-card-picture"><source media="(max-width: 768px)" srcSet={tigerPortrait} /><img className="retro-card-art" src={tigerLandscape} alt="" /></picture>}

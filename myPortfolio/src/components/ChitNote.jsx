@@ -68,20 +68,18 @@ function PlainBack() {
 
 /* ---------- the chit that leaves the jar and unfolds ---------- */
 
-export default function ChitNote({ project, index, total, fromRect, onClose }) {
-  // 0 folded chit · 1 opened like a book · 2 opened downwards · 3 opened like a book again
-  const [stage, setStage] = useState(() => reduced() ? 3 : 0);
+export default function ChitNote({ project, index, total, fromRect, instant = false, onClose }) {
+  const [stage, setStage] = useState(() => (reduced() || instant ? 3 : 0));
   const [closing, setClosing] = useState(false);
   const popRef = useRef(null);
   const closeRef = useRef(null);
   const timers = useRef([]);
   const later = (fn, ms) => { timers.current.push(window.setTimeout(fn, ms)); };
 
-  /* fly from the jar: measure where the chit was, start the pop animation there */
   useLayoutEffect(() => {
     const pop = popRef.current;
     if (!pop) return;
-    if (fromRect && !reduced()) {
+    if (fromRect && !reduced() && !instant) {
       const box = pop.getBoundingClientRect();
       const base = pop.querySelector(".cell-base").getBoundingClientRect();
       pop.style.setProperty("--fx", `${fromRect.left + fromRect.width / 2 - (box.left + box.width / 2)}px`);
@@ -89,11 +87,10 @@ export default function ChitNote({ project, index, total, fromRect, onClose }) {
       pop.style.setProperty("--fs", String(Math.max(0.2, fromRect.width / base.width)));
       pop.classList.add("go");
     }
-  }, [fromRect]);
+  }, [fromRect, instant]);
 
-  /* the three unfolds */
   useEffect(() => {
-    if (reduced()) return;
+    if (reduced() || instant) return;
     const scheduled = [
       window.setTimeout(() => setStage(1), 1050),
       window.setTimeout(() => setStage(2), 1950),
@@ -101,14 +98,19 @@ export default function ChitNote({ project, index, total, fromRect, onClose }) {
     ];
     timers.current.push(...scheduled);
     return () => scheduled.forEach(window.clearTimeout);
-  }, []);
+  }, [instant]);
 
   useEffect(() => { if (stage === 3) closeRef.current?.focus(); }, [stage]);
+
+  const skip = () => {
+    timers.current.forEach(window.clearTimeout);
+    setStage(3);
+  };
 
   const close = () => {
     if (closing) return;
     timers.current.forEach(window.clearTimeout);
-    if (reduced()) { onClose(); return; }
+    if (reduced() || instant) { onClose(); return; }
     setClosing(true);
     setStage(2); later(() => setStage(1), 380); later(() => setStage(0), 760); later(onClose, 1250);
   };
@@ -162,6 +164,9 @@ export default function ChitNote({ project, index, total, fromRect, onClose }) {
         {project.href && <a href={project.href} target="_blank" rel="noreferrer">{project.link} ↗</a>}
         <button type="button" ref={closeRef} onClick={close}>fold away ×</button>
       </div>
+      {stage < 3 && !closing && (
+        <button type="button" className="note-skip" onClick={skip}>skip animation</button>
+      )}
     </div>
   );
   /* portal: keeps the overlay out of the section's overflow/stacking context */

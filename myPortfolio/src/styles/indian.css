@@ -260,8 +260,10 @@ h3,
   border: 1px solid rgba(237, 212, 154, .28);
   border-left: 3.5px solid #f3c45d;
   border-radius: 14px;
-  background: rgba(52, 14, 7, .3);
-  box-shadow: 0 20px 44px rgba(24, 6, 3, .26);
+  background: rgba(52, 14, 7, .34);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: inset 0 1px 0 rgba(255, 252, 245, .12), 0 20px 44px rgba(24, 6, 3, .28);
   color: rgba(255, 252, 245, .95);
   text-shadow: none;
 }
@@ -483,6 +485,29 @@ h3,
   font: 500 .8rem/1.2 var(--f-label);
   letter-spacing: .08em;
   color: rgba(255, 248, 234, .88);
+}
+
+.jar-skip {
+  display: block;
+  margin: .5rem auto 0;
+  padding: .2rem .55rem;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font: 400 .76rem/1.2 var(--f-body);
+  letter-spacing: .04em;
+  color: rgba(255, 248, 234, .52);
+  transition: color .2s ease, opacity .2s ease;
+}
+
+.jar-skip:hover,
+.jar-skip:focus-visible {
+  color: rgba(255, 248, 234, .92);
+  outline: none;
+}
+
+.jar-skip.is-on {
+  color: #f3c45d;
 }
 
 .jar-next {
@@ -896,6 +921,27 @@ h3,
 .note-actions button:focus-visible {
   outline: 2px solid #fff;
   outline-offset: 3px;
+}
+
+.note-skip {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.35rem;
+  z-index: 6;
+  padding: .25rem .55rem;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font: 400 .8rem/1.2 var(--f-body);
+  letter-spacing: .04em;
+  color: rgba(255, 248, 234, .52);
+  transition: color .2s ease;
+}
+
+.note-skip:hover,
+.note-skip:focus-visible {
+  color: rgba(255, 248, 234, .95);
+  outline: none;
 }
 
 @media (max-width: 768px) {
@@ -1504,7 +1550,7 @@ h3,
   letter-spacing: .06em;
   text-transform: lowercase;
   cursor: pointer;
-  transition: background-color .2s ease, color .2s ease, border-color .2s ease, gap .2s ease;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease, gap .2s ease, transform .18s ease, box-shadow .2s ease;
 }
 
 .home-enter:hover {
@@ -1512,11 +1558,22 @@ h3,
   border-color: var(--kumkum);
   color: var(--ivory);
   gap: 1.15rem;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(139, 53, 36, .18);
+}
+
+.home-enter:active {
+  transform: translateY(0);
 }
 
 .home-enter span {
   font-size: 1.05rem;
   line-height: 1;
+  transition: transform .2s ease;
+}
+
+.home-enter:hover span {
+  transform: translateX(3px);
 }
 
 .studio-home-art {
@@ -1533,8 +1590,20 @@ h3,
   width: min(92%, 310px);
   aspect-ratio: 1;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(212, 150, 42, .18) 0%, rgba(212, 150, 42, .06) 54%, transparent 72%);
+  background: radial-gradient(circle, rgba(212, 150, 42, .2) 0%, rgba(212, 150, 42, .07) 54%, transparent 72%);
   pointer-events: none;
+  animation: haldi-breathe 5.5s ease-in-out infinite;
+}
+
+@keyframes haldi-breathe {
+  0%, 100% {
+    transform: scale(1);
+    opacity: .9;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
 }
 
 .studio-home-art .shera-desktop {
@@ -2313,6 +2382,12 @@ h3,
       opacity: .55;
     }
 
+    .warli-wall-contact .warli-mob-l,
+    .warli-wall-contact .warli-mob-c,
+    .warli-wall-contact .warli-mob-r {
+      display: none;
+    }
+
     .warli-mob-l {
       left: 18px;
       transform: rotate(-4deg);
@@ -2419,32 +2494,43 @@ h3,
     }
 
     .deck-card-front[data-skill="jack of all, master of none"] .retro-card-art.jack-art {
-      top: 19%;
+      top: 22%;
       left: 50%;
-      width: 78%;
-      height: 45%;
+      width: 76%;
+      height: 40%;
       transform: translateX(-50%);
     }
 
     .deck-card-front[data-skill="jack of all, master of none"] .in-card-title {
-      top: 7%;
-      left: 10%;
-      right: 10%;
-      width: auto;
+      top: 10px;
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
+      width: max-content;
+      max-width: calc(100% - 92px);
       text-align: center;
-      font-size: clamp(1.1rem, 4.4vw, 1.35rem);
+      font-size: clamp(.95rem, 3.8vw, 1.2rem);
     }
 
     .deck-card-front[data-skill="jack of all, master of none"] .retro-card-caption {
       left: 8%;
       right: 8%;
-      bottom: 10.5%;
+      bottom: 12.5%;
       width: auto;
       transform: none;
       text-align: center;
       border-top: 1px solid #e2d5bf;
       padding: .5rem .65rem;
       background: rgba(255, 252, 245, .94);
+    }
+
+    .retro-card-caption {
+      bottom: 12.5%;
+    }
+
+    .in-card-prompt {
+      bottom: 4.8%;
+      font-size: .72rem;
     }
 
     .content>.contact .postcard-section {
@@ -2671,4 +2757,40 @@ h3,
   .app-layout .postcard-form :is(input, textarea):focus-visible {
     outline: 3px solid var(--indigo);
     outline-offset: 2px;
+  }
+
+  ::selection {
+    background: rgba(232, 184, 75, .45);
+    color: var(--ink);
+  }
+
+  .deck-card-front.retro-card {
+    transition: transform .22s cubic-bezier(.22, 1, .36, 1), box-shadow .22s ease;
+  }
+
+  .deck-card-front.retro-card:hover {
+    transform: translateY(-3px);
+  }
+
+  .deck-card-front.retro-card:active {
+    transform: translateY(1px) scale(.992);
+  }
+
+  .postcard-stamp-box {
+    transform: rotate(-2deg);
+  }
+
+  .postcard-socials .social {
+    transition: color .18s ease, transform .18s ease, opacity .18s ease;
+  }
+
+  .postcard-socials .social:hover {
+    color: var(--haldi);
+    transform: translateY(-1px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .studio-home-art::before {
+      animation: none;
+    }
   }

@@ -5,7 +5,7 @@ import { WarliWall } from "../components/WarliArt";
 
 const socials = [
   ["instagram", "https://instagram.com/yashplusraj"],
-  ["snapchat", "https://www.snapchat.com/"],
+  ["snapchat", "https://snapchat.com/t/B7tRfph4"],
   ["spotify", "https://open.spotify.com/user/d6cswqxdbscg6zkpul2qh3d6t"],
   ["reddit", "https://reddit.com/user/yad08102005"],
   ["linkedin", "https://www.linkedin.com/in/yashraj-dave-97620a290/"],
